@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SooshARPG Soosh Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+</head>
+<body>
+  <a href="index.html"><button type="button">Go Back</button></a>
+  <h1>Current Soosh = <span id="currentSooshName"></span></h1>
+  <p>Owned by <span id="currentSooshUsername"></span>.</p>
+  <table>
+    <tr><td>Alchemy</td><td id="currentSooshAlchemy"></td></tr>
+    <tr><td>Angling</td><td id="currentSooshAngling"></td></tr>
+    <tr><td>Hunting</td><td id="currentSooshHunting"></td></tr>
+    <tr><td>Gathering</td><td id="currentSooshGathering"></td></tr>
+    <tr><td>Mining</td><td id="currentSooshMining"></td></tr>
+    <tr><td>Wood-Cutting</td><td id="currentSooshWoodcutting"></td></tr>
+  </table>
+
+  <!-- JavaScripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script type="text/javascript" src="js/tabletop.js"></script>
+  <script src="js/taffy.js"></script>
+  <script type="text/javascript">
+    var public_spreadsheet_url = "https://docs.google.com/spreadsheets/d/1xUaU5i38rzwjQCs5RRwAQUIa6kpNcTFtlSSp_Tr80nE/edit?usp=sharing";
+    $(document).ready( function() {
+      Tabletop.init( { key: public_spreadsheet_url,
+                       callback: showInfo } );
+    });
+
+    function showInfo(data, tabletop) {
+      var currentSoosh;
+      var currentSooshUsername = window.location.search;
+      currentSooshUsername = currentSooshUsername.replace("?username=","");
+      $.each( tabletop.sheets("Sheet1").all(), function(i, soosh) {
+        if (soosh.username == currentSooshUsername) {
+          currentSoosh = { "username":soosh.username,
+                           "status":soosh.status,
+                           "sooshName":soosh.sooshName,
+                           "village":soosh.village,
+                           "promptCount":soosh.promptCount,
+                           "totalExp":soosh.totalExp,
+                           "swirlSeeds":soosh.swirlSeeds,
+                           "questCount":soosh.questCount,
+                           "achieveCount":soosh.achieveCount,
+                           "hotStreak":soosh.hotStreak,
+                           "alchemy":soosh.alchemy,
+                           "angling":soosh.angling,
+                           "hunting":soosh.hunting,
+                           "gathering":soosh.gathering,
+                           "mining":soosh.mining,
+                           "woodcutting":soosh.woodcutting
+                         };
+          document.title = "SooshARPG | " + currentSoosh.sooshName;
+          $("#currentSooshName").text(currentSoosh.sooshName);
+          $("#currentSooshUsername").text(currentSoosh.username);
+          $("#currentSooshAlchemy").text(currentSoosh.alchemy);
+          $("#currentSooshAngling").text(currentSoosh.angling);
+          $("#currentSooshHunting").text(currentSoosh.hunting);
+          $("#currentSooshGathering").text(currentSoosh.gathering);
+          $("#currentSooshMining").text(currentSoosh.mining);
+          $("#currentSooshWoodcutting").text(currentSoosh.woodcutting);
+          return;
+        }
+      });
+    }
+  </script>
+</body>
+</html>

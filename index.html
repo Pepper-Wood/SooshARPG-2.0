@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SooshARPG Overview</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  <style>
+  .Rtable {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 3em 0;
+    padding: 0;
+  }
+  .Rtable-cell {
+    box-sizing: border-box;
+    flex-grow: 1;
+    width: 100%;
+    padding: 0.8em 1.2em;
+    overflow: hidden;
+    list-style: none;
+    border: 1px solid #000;
+  }
+  .Rtable--2cols > .Rtable-cell  { width: 50%; }
+  .Rtable--3cols > .Rtable-cell  { width: 33.33%; }
+  .Rtable--4cols > .Rtable-cell  { width: 25%; }
+  .Rtable--5cols > .Rtable-cell  { width: 20%; }
+  .Rtable--6cols > .Rtable-cell  { width: 16.6%; }
+  </style>
+</head>
+<body>
+  <div id="sooshBody"></div>
+  <!-- JavaScripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script type="text/javascript" src="js/tabletop.js"></script>
+  <script src="js/taffy.js"></script>
+  <script type="text/javascript">
+    var public_spreadsheet_url = "https://docs.google.com/spreadsheets/d/1xUaU5i38rzwjQCs5RRwAQUIa6kpNcTFtlSSp_Tr80nE/edit?usp=sharing";
+    $(document).ready( function() {
+      Tabletop.init( { key: public_spreadsheet_url,
+                       callback: showInfo } );
+    });
+
+    function showInfo(data, tabletop) {
+      var sooshARPGDirectory = TAFFY();
+      $.each( tabletop.sheets("Sheet1").all(), function(i, soosh) {
+        sooshARPGDirectory.insert({ "username":soosh.username,
+                             "status":soosh.status,
+                             "sooshName":soosh.sooshName,
+                             "village":soosh.village,
+                             "promptCount":soosh.promptCount,
+                             "totalExp":soosh.totalExp,
+                             "swirlSeeds":soosh.swirlSeeds,
+                             "questCount":soosh.questCount,
+                             "achieveCount":soosh.achieveCount,
+                             "hotStreak":soosh.hotStreak,
+                             "alchemy":soosh.alchemy,
+                             "angling":soosh.angling,
+                             "hunting":soosh.hunting,
+                             "gathering":soosh.gathering,
+                             "mining":soosh.mining,
+                             "woodcutting":soosh.woodcutting
+        });
+      });
+      var pageString = "<div class=\"Rtable Rtable--4cols\">";
+      sooshARPGDirectory().order("sooshName asec").each(function (soosh) {
+        pageString += "<div class=\"Rtable-cell\">";
+        pageString += soosh.username + "<br><a href=\"soosh.html?username=" + soosh.username + "\"><button type=\"button\">" + soosh.sooshName + "</button></a>";
+        pageString += "</div>";
+      });
+      pageString += "</div>";
+      $("#sooshBody").html(pageString);
+    }
+  </script>
+</body>
+</html>
