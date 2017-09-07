@@ -6,8 +6,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  <link rel="stylesheet" href="css/rpgui.css">
   <style>
+  body {
+      background: #aaf;
+  }
   .Rtable {
     display: flex;
     flex-wrap: wrap;
@@ -31,11 +34,18 @@
   </style>
 </head>
 <body>
-  <div id="sooshBody"></div>
+  <div class="rpgui-content" style="overflow-y:scroll;">
+    <div id="container">
+      <div class="inner rpgui-container framed" style="position:relative;width:80%;margin:10px auto">
+        <div id="sooshBody"></div>
+      </div>
+    </div>
+  </div>
   <!-- JavaScripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script type="text/javascript" src="js/tabletop.js"></script>
   <script src="js/taffy.js"></script>
+  <script src="js/rpgui.js"></script>
   <script type="text/javascript">
     var public_spreadsheet_url = "https://docs.google.com/spreadsheets/d/1xUaU5i38rzwjQCs5RRwAQUIa6kpNcTFtlSSp_Tr80nE/edit?usp=sharing";
     $(document).ready( function() {
@@ -64,10 +74,15 @@
                              "woodcutting":soosh.woodcutting
         });
       });
+
+
       var pageString = "<div class=\"Rtable Rtable--4cols\">";
       sooshARPGDirectory().order("sooshName asec").each(function (soosh) {
-        pageString += "<div class=\"Rtable-cell\">";
-        pageString += soosh.username + "<br><a href=\"soosh.html?username=" + soosh.username + "\"><button type=\"button\">" + soosh.sooshName + "</button></a>";
+        pageString += "<div class=\"Rtable-cell rpgui-container framed-grey\">";
+        pageString += "<p>" + soosh.username + "</p>";
+        if (soosh.sooshName != "") {
+          pageString += "<a href=\"soosh.html?username=" + soosh.username + "\"><button type=\"button\" class=\"rpgui-button\"><p>" + soosh.sooshName + "</p></button></a>";
+        }
         pageString += "</div>";
       });
       pageString += "</div>";

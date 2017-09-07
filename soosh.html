@@ -6,25 +6,58 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  <link rel="stylesheet" href="css/rpgui.css">
+  <style>
+    body {
+        background: #aaf;
+    }
+  </style>
 </head>
 <body>
-  <a href="index.html"><button type="button">Go Back</button></a>
-  <h1>Current Soosh = <span id="currentSooshName"></span></h1>
-  <p>Owned by <span id="currentSooshUsername"></span>.</p>
-  <table>
-    <tr><td>Alchemy</td><td id="currentSooshAlchemy"></td></tr>
-    <tr><td>Angling</td><td id="currentSooshAngling"></td></tr>
-    <tr><td>Hunting</td><td id="currentSooshHunting"></td></tr>
-    <tr><td>Gathering</td><td id="currentSooshGathering"></td></tr>
-    <tr><td>Mining</td><td id="currentSooshMining"></td></tr>
-    <tr><td>Wood-Cutting</td><td id="currentSooshWoodcutting"></td></tr>
-  </table>
+
+  <div class="rpgui-content" style="overflow-y:scroll;">
+    <div id="container">
+      <div class="inner rpgui-container framed" style="position:relative;width:80%;margin:10px auto">
+        <header>
+          <h1 style="font-size:250%"><span id="currentSooshName"></span></h1>
+          <hr class="golden" />
+          <h2 style="font-size:175%"><span id="currentSooshUsername"></span></h2>
+        </header>
+
+        <a href="index.html"><button class="rpgui-button" type="button"><p>Go Back</p></button></a>
+
+        <p>RPGUI is a framework of CSS and JavaScript that creates an awesome RPG-like GUI for HTML5 and Web games.</p>
+
+        <p>Life Skills</p>
+        <hr />
+        <table style="width:100%;table-layout:fixed">
+          <tr>
+            <td>
+              <label>Alchemy:</label>
+              <div id="currentSooshAlchemy"></div>
+              <label>Angling:</label>
+              <div id="currentSooshAngling"></div>
+              <label>Hunting:</label>
+              <div id="currentSooshHunting"></div>
+              <label>Gathering:</label>
+              <div id="currentSooshGathering"></div>
+              <label>Mining:</label>
+              <div id="currentSooshMining"></div>
+              <label>Wood-Cutting:</label>
+              <div id="currentSooshWoodcutting"></div>
+            </td><td>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
 
   <!-- JavaScripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script type="text/javascript" src="js/tabletop.js"></script>
   <script src="js/taffy.js"></script>
+  <script src="js/rpgui.js"></script>
   <script type="text/javascript">
     var public_spreadsheet_url = "https://docs.google.com/spreadsheets/d/1xUaU5i38rzwjQCs5RRwAQUIa6kpNcTFtlSSp_Tr80nE/edit?usp=sharing";
     $(document).ready( function() {
@@ -55,15 +88,16 @@
                            "mining":soosh.mining,
                            "woodcutting":soosh.woodcutting
                          };
+          var progressBarColors = {novice:"red",rookie:"yellow",apprentice:"green",whiz:"blue",genius:"IDK",master:"IDK",hero:"IDK"};
           document.title = "SooshARPG | " + currentSoosh.sooshName;
           $("#currentSooshName").text(currentSoosh.sooshName);
           $("#currentSooshUsername").text(currentSoosh.username);
-          $("#currentSooshAlchemy").text(currentSoosh.alchemy);
-          $("#currentSooshAngling").text(currentSoosh.angling);
-          $("#currentSooshHunting").text(currentSoosh.hunting);
-          $("#currentSooshGathering").text(currentSoosh.gathering);
-          $("#currentSooshMining").text(currentSoosh.mining);
-          $("#currentSooshWoodcutting").text(currentSoosh.woodcutting);
+          $("#currentSooshAlchemy").html("<div class=\"rpgui-progress " + progressBarColors[currentSoosh.alchemy] + "\" data-rpguitype=\"progress\"><div class=\" rpgui-progress-track\"><div class=\" rpgui-progress-fill " + progressBarColors[currentSoosh.alchemy] + "\" style=\"left: 0px; width: 100%;\"></div></div><div class=\" rpgui-progress-left-edge\"></div><div class=\" rpgui-progress-right-edge\"></div></div>");
+          $("#currentSooshAngling").html("<div class=\"rpgui-progress " + progressBarColors[currentSoosh.angling] + "\" data-rpguitype=\"progress\"><div class=\" rpgui-progress-track\"><div class=\" rpgui-progress-fill " + progressBarColors[currentSoosh.angling] + "\" style=\"left: 0px; width: 100%;\"></div></div><div class=\" rpgui-progress-left-edge\"></div><div class=\" rpgui-progress-right-edge\"></div></div>");
+          $("#currentSooshHunting").html("<div class=\"rpgui-progress " + progressBarColors[currentSoosh.hunting] + "\" data-rpguitype=\"progress\"><div class=\" rpgui-progress-track\"><div class=\" rpgui-progress-fill " + progressBarColors[currentSoosh.hunting] + "\" style=\"left: 0px; width: 100%;\"></div></div><div class=\" rpgui-progress-left-edge\"></div><div class=\" rpgui-progress-right-edge\"></div></div>");
+          $("#currentSooshGathering").html("<div class=\"rpgui-progress " + progressBarColors[currentSoosh.gathering] + "\" data-rpguitype=\"progress\"><div class=\" rpgui-progress-track\"><div class=\" rpgui-progress-fill " + progressBarColors[currentSoosh.gathering] + "\" style=\"left: 0px; width: 100%;\"></div></div><div class=\" rpgui-progress-left-edge\"></div><div class=\" rpgui-progress-right-edge\"></div></div>");
+          $("#currentSooshMining").html("<div class=\"rpgui-progress " + progressBarColors[currentSoosh.mining] + "\" data-rpguitype=\"progress\"><div class=\" rpgui-progress-track\"><div class=\" rpgui-progress-fill " + progressBarColors[currentSoosh.mining] + "\" style=\"left: 0px; width: 100%;\"></div></div><div class=\" rpgui-progress-left-edge\"></div><div class=\" rpgui-progress-right-edge\"></div></div>");
+          $("#currentSooshWoodcutting").html("<div class=\"rpgui-progress " + progressBarColors[currentSoosh.woodcutting] + "\" data-rpguitype=\"progress\"><div class=\" rpgui-progress-track\"><div class=\" rpgui-progress-fill " + progressBarColors[currentSoosh.woodcutting] + "\" style=\"left: 0px; width: 100%;\"></div></div><div class=\" rpgui-progress-left-edge\"></div><div class=\" rpgui-progress-right-edge\"></div></div>");
           return;
         }
       });
