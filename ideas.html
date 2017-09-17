@@ -1,0 +1,69 @@
+<html>
+<head>
+  <style>
+    .grey {
+      color: #a4a4a4;
+    }
+    .done {
+      text-decoration: line-through;
+      color: #dfdfdf;
+    }
+  </style>
+</head>
+<body>
+
+<a href="template.html"><h1>Back to Template</h1></a>
+
+<h1>TO-DO</h1>
+<ul>
+  <li>Prompts next to Life Skill EXP</li>
+  <li>Do you want an area for prompts to be visible and sortable using dropdown?</li>
+  <li class="done">Achievement banner</li>
+  <li class="done">JavaScript for the achievement dropdown</li>
+  <li class="done">Bandana mock-up</li>
+  <li class="done">Bandana implementation</li>
+  <li>Figure out the proper universal color scheme based on the art assets provided (stuff like changing green, red, and yellow to more appropriate colors; use the progress bars)</li>
+  <li>Create themes based on the four different villages, with four different templates to view them</li>
+  <li class="grey">Minor: Eventually, gather user feedback on the "personality" and "notable relationship" sections, in case there is not enough customization. But this is easiet for now</li>
+  <li class="done">Add that scrolling cable ONLY to the Personality and Relationships boxes</li>
+  <li class="done">Have progress bars at the top of the achievement section depending on dropdown! See <a href="http://www.enhancedsteam.com/images/screenshots/enhancedsteam24.png">image</a> for idea spawn</li>
+  <li>Template</li>
+  <li>Template</li>
+  <li>Template</li>
+</ul>
+
+<h1>Admin Spreadsheet</h1>
+<ul>
+  <li>Complete Items spreadsheet that has links to both the small images as well as the big images</li>
+  <li>Template</li>
+  <li>Template</li>
+  <li>Template</li>
+  <li>Template</li>
+</ul>
+
+<h1>User Spreadsheet</h1>
+<ul>
+  <li>Custom favicon</li>
+  <li>Template</li>
+  <li>Template</li>
+  <li>Template</li>
+  <li>Template</li>
+</ul>
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script>
+$( "li" ).each(function( index ) {
+  if ($(this).text() == "Template") {
+    $(this).css("display","none");
+  }
+});
+</script>
+</body>
+</html>

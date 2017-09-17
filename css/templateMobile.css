@@ -1,0 +1,14 @@
+@media (max-width: 767px) {
+  .horizontalFlex, .horizontalFlex_fixed {
+    flex-direction: column;
+  }
+  .horizontalFlex>div, .horizontalFlex_fixed>div {
+    width: auto;
+  }
+  .horizontalFlex>div, .horizontalFlex_fixed>div {
+    padding: 0;
+  }
+  .sooshARPGCard {
+    width: 95%;
+  }
+}

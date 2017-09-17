@@ -1,0 +1,209 @@
+body {
+    background: #aaf;
+    margin: 0;
+    cursor: url(img/cursor/default.png), auto;
+}
+a {
+  cursor: url(img/cursor/point.png) 10 0,auto;
+}
+.sooshARPGCard {
+  position: static;
+  width: 80%;
+  margin: 10px auto;
+}
+.horizontalFlex, .horizontalFlex_fixed, .progressBarFlex, .achievementFlex {
+  display: flex;
+  justify-content: space-between;
+}
+.horizontalFlex>div, .horizontalFlex_fixed>div {
+  padding: 10px;
+}
+.horizontalFlex_fixed>div {
+  width: 50%;
+}
+.infoSection {
+  overflow-y:scroll;
+}
+.leftNavbar {
+  z-index: 100;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 50px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+.leftNavbar li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.leftNavbar li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+.leftNavbar li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    width: 100%;
+    z-index: 100;
+}
+.navbar li {
+    float: left;
+}
+.navbar li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.navbar li a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+    text-decoration: none;
+}
+.navbar li.dropdown {
+    display: inline-block;
+}
+.navbar .dropdown-content {
+    display: none;
+    position: fixed;
+    top: 50px;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+.navbar .dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+.navbar .dropdown-content a:hover {background-color: #f1f1f1}
+.navbar .dropdown:hover .dropdown-content {
+    display: block;
+}
+ul.rpgui-dropdown-imp {
+   position: absolute;
+   display: none;
+}
+.rpgui-dropdown-imp li {
+  margin: 0 20px;
+}
+.rpgui-dropdown-imp li.selectedDropdown {
+  color: yellow;
+}
+
+.inventoryItem, .craftingItem, .bandanaItem {
+  width: 64px;
+  height: 64px;
+  background-image: url(img/icons/empty-slot.png);
+  background-size: 100%;
+  display: inline-block;
+  transition: box-shadow 500ms;
+}
+.craftingItem {
+  background-image: url(img/icons/failure-slot.png);
+}
+.craftingItem.success {
+  background-image: url(img/icons/success-slot.png);
+}
+.inventoryItem>img, .craftingItem>img, .bandanaItem>img {
+  width: 64px;
+  height: 64px;
+}
+.inventoryItem>.quantity, .craftingItem>.quantity {
+  position: absolute;
+  background-color: yellow;
+  padding: 2px;
+  border-radius: 10px;
+}
+.inventoryTooltipImage, .inventoryTooltipText, .craftingTooltipImage, .craftingTooltipText, .bandanaTooltipImage, .bandanaTooltipText {
+  display: none;
+}
+.inventoryItem:hover, .craftingItem:hover, .bandanaItem:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.selectedItem {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+#inventoryPreviewText table p {
+  margin: 0;
+}
+.craftingPreview>p {
+  margin: 0;
+}
+.achievementFlex p {
+  margin: 0;
+}
+.bandanaPreview>p {
+  margin: 0;
+}
+.achievementFlex .rpgui-icon {
+  margin-right: 10px;
+}
+.achievementTitle {
+  font-weight: bold;
+}
+p.achievementQuote, p.achievementDescription, p.achievementDate {
+  font-size: 10px;
+}
+p.achievementQuote {
+  font-style: italic;
+}
+.star-icon {
+    display: inline-block;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 22px;
+    height: 22px;
+    background-image: url(img/icons/empty-star.png);
+}
+.star-icon.filled {
+    background-image: url(img/icons/full-star.png);
+}
+.rpgui-container.framed-golden.achievementContainer {
+  background-size: 100% 100%;
+  border-image-width: 10px;
+  border-image-slice: 5;
+  border-width: 5px;
+}
+.rpgui-container.framed-golden.achievementContainer.tutorialBG { background-image: url(img/progress-red.png); }
+.rpgui-container.framed-golden.achievementContainer.exclusiveBG { background-image: url(img/progress-yellow.png); }
+.rpgui-container.framed-golden.achievementContainer.questBG { background-image: url(img/progress-green.png); }
+.rpgui-container.framed-golden.achievementContainer.lifeSkillsBG { background-image: url(img/progress-blue.png); }
+.tutorial-achievement-progress, .exclusive-achievement-progress, .quest-achievement-progress, .lifeskills-achievement-progress, .locked-achievement-progress {
+  display: none;
+}
+.locked-achievement {
+  display: none;
+}
+
+
+
+.rpgui-container::-webkit-scrollbar-track {
+  background-image: url("img/scrollbar-track.png");
+  background-size: 18px 60px;
+  background-repeat: repeat-y;
+}
+.rpgui-container::-webkit-scrollbar {
+	width: 18px;
+}
+.rpgui-container::-webkit-scrollbar-thumb {
+  background-image: url("img/scrollbar-thumb.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
