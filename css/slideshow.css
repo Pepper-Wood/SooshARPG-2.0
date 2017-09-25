@@ -1,0 +1,105 @@
+/* media query vars */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 1em;
+  width: 60%; }
+  @media (max-width: 800px) {
+    body {
+      width: 80%;
+      border: none; } }
+  @media (max-width: 400px) {
+    body {
+      width: 95%;
+      padding: 0; } }
+
+.che-slideshow {
+  overflow: hidden;
+  position: relative; }
+
+.che-slideshow-slide {
+  width: 100%;
+  top: 0;
+  position: absolute; }
+  .che-slideshow-slide .che-slideshow-caption {
+    bottom: 1em;
+    font-size: 0.8em;
+    color: #444444;
+    position: absolute;
+    text-align: center;
+    width: 100%; }
+    @media (max-width: 800px) {
+      .che-slideshow-slide .che-slideshow-caption {
+        font-size: 0.75em; } }
+    @media (max-width: 400px) {
+      .che-slideshow-slide .che-slideshow-caption {
+        font-size: 0.6em; } }
+  .che-slideshow-slide img {
+    width: 100%; }
+  .che-slideshow-slide.inactive {
+    display: none; }
+  .che-slideshow-slide.position-left {
+    top: 0;
+    left: -100%; }
+  .che-slideshow-slide.position-right {
+    top: 0;
+    right: -100%;
+    position: absolute; }
+
+/* controls */
+.slideshow-control {
+  height: 100%;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  width: 10%;
+  z-index: 1; }
+  .slideshow-control.slideshow-left-control {
+    left: 0; }
+  .slideshow-control.slideshow-right-control {
+    right: 0; }
+  .slideshow-control:hover .slideshow-arrow {
+    opacity: 0.7; }
+  .slideshow-control .slideshow-left-arrow {
+    left: 0;
+    height: 60%;
+    margin-top: -150%;
+    opacity: 0.3;
+    position: absolute;
+    top: 50%; }
+  .slideshow-control .slideshow-right-arrow {
+    right: 0;
+    height: 60%;
+    margin-top: -150%;
+    opacity: 0.3;
+    position: absolute;
+    top: 50%; }
+
+/* indicators */
+.slideshow-indicator-container {
+  left: 50%;
+  list-style: none;
+  margin-left: -30%;
+  padding-left: 0;
+  position: absolute;
+  text-align: center;
+  top: -5px;
+  width: 60%;
+  z-index: 15; }
+  @media (max-width: 800px) {
+    .slideshow-indicator-container {
+      top: -10px; } }
+  .slideshow-indicator-container .slideshow-indicator {
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    display: inline-block;
+    height: 10px;
+    width: 10px; }
+    .slideshow-indicator-container .slideshow-indicator.inactive-indicator {
+      background-color: #fff; }
+
+/*# sourceMappingURL=slideshow.css.map */

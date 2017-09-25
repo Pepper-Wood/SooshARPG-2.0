@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="css/rpgui.css">
+  <link rel="stylesheet" href="css/templateDesktop.css">
+  <link rel="stylesheet" href="css/templateMobile.css">
   <style>
   body {
       background: #aaf;
@@ -28,17 +30,30 @@
   }
   .Rtable--2cols > .Rtable-cell  { width: 50%; }
   .Rtable--3cols > .Rtable-cell  { width: 33.33%; }
-  .Rtable--4cols > .Rtable-cell  { width: 25%; }
+  .Rtable--4cols > .Rtable-cell  {
+    max-width: 25%;
+    width: 25%;
+  }
   .Rtable--5cols > .Rtable-cell  { width: 20%; }
   .Rtable--6cols > .Rtable-cell  { width: 16.6%; }
   </style>
 </head>
 <body>
+  <a href="admin.html">Admin page</a>
   <div class="rpgui-content" style="overflow-y:scroll;">
     <div id="container">
+
+      <ul class="navbar" data-scroll-header>
+        <li><a href="template.html">Template</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+      <div style="height:50px"></div>
+
+
       <div class="inner rpgui-container framed" style="position:relative;width:80%;margin:10px auto">
         <div id="sooshBody"></div>
       </div>
+
     </div>
   </div>
   <!-- JavaScripts -->
@@ -55,23 +70,17 @@
 
     function showInfo(data, tabletop) {
       var sooshARPGDirectory = TAFFY();
-      $.each( tabletop.sheets("Sheet1").all(), function(i, soosh) {
+      $.each( tabletop.sheets("memberOverview").all(), function(i, soosh) {
         sooshARPGDirectory.insert({ "username":soosh.username,
-                             "status":soosh.status,
-                             "sooshName":soosh.sooshName,
-                             "village":soosh.village,
-                             "promptCount":soosh.promptCount,
-                             "totalExp":soosh.totalExp,
-                             "swirlSeeds":soosh.swirlSeeds,
-                             "questCount":soosh.questCount,
-                             "achieveCount":soosh.achieveCount,
-                             "hotStreak":soosh.hotStreak,
-                             "alchemy":soosh.alchemy,
-                             "angling":soosh.angling,
-                             "hunting":soosh.hunting,
-                             "gathering":soosh.gathering,
-                             "mining":soosh.mining,
-                             "woodcutting":soosh.woodcutting
+                                    "status":soosh.status,
+                                    "sooshName":soosh.sooshName,
+                                    "village":soosh.village,
+                                    "appURL":soosh.appURL,
+                                    "spreadsheetURL":soosh.spreadsheetURL,
+                                    "totalExp":soosh.totalExp,
+                                    "swirlSeeds":soosh.swirlSeeds,
+                                    "achieveCount":soosh.achieveCount,
+                                    "hotStreak":soosh.hotStreak
         });
       });
 
@@ -83,7 +92,6 @@
         if (soosh.sooshName != "") {
           pageString += "<a href=\"soosh.html?username=" + soosh.username + "\"><button type=\"button\" class=\"rpgui-button\"><p>" + soosh.sooshName + "</p></button></a>";
         }
-        pageString += "<a href=\"template.html\"><button type=\"button\" class=\"rpgui-button\"><p>Template</p></button></a>";
         pageString += "</div>";
       });
       pageString += "</div>";

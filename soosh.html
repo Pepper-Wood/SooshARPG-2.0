@@ -1,107 +1,218 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>SooshARPG Soosh Page</title>
+  <title>Kumo and Lottie | SooshARPG Database</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" href="css/rpgui.css">
-  <style>
-    body {
-        background: #aaf;
-    }
-  </style>
+  <link id="favicon" rel="shortcut icon" type="image/png" href="http://is5.mzstatic.com/image/thumb/Purple111/v4/67/5a/15/675a1530-900b-6edd-509a-a3d4ac8df10a/source/175x175bb.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/rpguiSoosh.css">
+  <link rel="stylesheet" href="css/templateDesktop.css">
+  <link rel="stylesheet" href="css/templateMobile.css">
 </head>
 <body>
 
-  <div class="rpgui-content" style="overflow-y:scroll;">
+  <div id="loaderBlock">
+    <div id="loaderSection">
+      <img src="https://orig00.deviantart.net/8601/f/2017/265/a/2/smallertransparentplaceholder_by_pepper_wood-dbo97we.png"/>
+      <div class="loader">Loading...</div>
+    </div>
+  </div>
+
+  <div id="villagerInfoCard"></div>
+  <div class="rpgui-content" style="overflow:scroll">
     <div id="container">
-      <div class="inner rpgui-container framed" style="position:relative;width:80%;margin:10px auto">
-        <header>
-          <h1 style="font-size:250%"><span id="currentSooshName"></span></h1>
-          <hr class="golden" />
-          <h2 style="font-size:175%"><span id="currentSooshUsername"></span></h2>
-        </header>
 
-        <a href="index.html"><button class="rpgui-button" type="button"><p>Go Back</p></button></a>
+      <ul class="navbar" data-scroll-header>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">Jump To...</a>
+          <div class="dropdown-content">
+            <a href="#villagerInfoCard">Villager Info</a>
+            <a href="#lifeSkillsExperienceCard">Life Skills Experience</a>
+            <a href="#inventoryCard">Inventory</a>
+            <a href="#achievementsCard">Achievements</a>
+          </div>
+        </li>
+        <li style="float:right"><a href="index.html">Go Back</a></li>
+        <li style="float:right"><a href="javascript:void(0)" onclick="openGenerator()">Generator</a></li>
+      </ul>
+      <div style="height:50px"></div>
 
-        <p>RPGUI is a framework of CSS and JavaScript that creates an awesome RPG-like GUI for HTML5 and Web games.</p>
 
-        <p>Life Skills</p>
-        <hr />
-        <table style="width:100%;table-layout:fixed">
-          <tr>
-            <td>
-              <label>Alchemy:</label>
-              <div id="currentSooshAlchemy"></div>
-              <label>Angling:</label>
-              <div id="currentSooshAngling"></div>
-              <label>Hunting:</label>
-              <div id="currentSooshHunting"></div>
-              <label>Gathering:</label>
-              <div id="currentSooshGathering"></div>
-              <label>Mining:</label>
-              <div id="currentSooshMining"></div>
-              <label>Wood-Cutting:</label>
-              <div id="currentSooshWoodcutting"></div>
-            </td><td>
-            </td>
-          </tr>
-        </table>
+      <div class="inner rpgui-container framed sooshARPGCard">
+        <h2 id="currentSooshName"></h2>
+        <hr class="golden" />
+        <div class="horizontalFlex_fixed">
+          <div>
+            <img id="profilePic" class="rpgui-container framed" src="https://orig00.deviantart.net/05b2/f/2017/265/5/0/transparentplaceholder_by_pepper_wood-dbo95tw.png" style="width:100%;padding:0">
+            <div class="framed-grey">
+              <p id="sooshPronouns"></p>
+              <p id="sooshFood"></p>
+              <p><u>Village</u>: <span id="currentSooshVillage"></span></p>
+              <p><u>Owner</u>: <span id="currentSooshUsername"></span></p>
+            </div>
+          </div>
+          <div>
+            <div id="expProgressBar"></div>
+            <div id="sooshButtons"></div>
+            <p id="sooshMagic"></p>
+            <hr>
+            <p id="noSpreadsheetInfo" style="display:none">Want to customize your page? Find out more later!</p>
+            <div id="sooshPersonalityInfoSection">
+              <p>Personality</p>
+              <div id="personalityBlurb" class="rpgui-container framed-grey infoSection" style="height:200px">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget ante id augue eleifend vestibulum. In pellentesque, erat sed pulvinar auctor, massa quam pharetra sem, eget iaculis est sem at ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer eu arcu quis metus vestibulum commodo eu non est. Praesent neque lacus, finibus eget facilisis a, bibendum vel enim. Fusce dui diam, sodales non porttitor ut, egestas id dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris sit amet mi eget risus placerat accumsan.</p>
+                <p><a href="test">Proin</a> purus enim, maximus eu tellus a, luctus euismod erat. Curabitur molestie iaculis fermentum. Ut ac est vulputate, venenatis odio fringilla, maximus nulla. Cras facilisis bibendum sem, finibus vestibulum lorem rutrum ac. Aliquam aliquet nisi eu metus euismod, non elementum dui lobortis. Proin tempor nulla eu sollicitudin vulputate. Proin viverra ligula quis nibh maximus interdum et nec diam. Sed fermentum libero et malesuada eleifend. Aenean lacus dolor, suscipit in nibh vitae, feugiat cursus tortor. Vestibulum ut efficitur diam. Vivamus eu lacinia leo. Praesent posuere consequat pretium. Nam eros tellus, laoreet id interdum eu, dictum sit amet velit. Nunc sit amet mattis tortor. Quisque lobortis interdum ante efficitur porta. Pellentesque at nisi id purus lacinia euismod vel quis nunc.</p>
+                <p>Sed malesuada est ipsum, et consequat metus porta at. Aliquam maximus luctus porttitor. Nulla id dignissim diam. Nulla at justo ut elit laoreet semper rutrum pretium tortor. Duis ornare consectetur consequat. Aenean consectetur feugiat augue vitae pharetra. Mauris erat velit, rutrum a porttitor id, mattis id mi. Sed feugiat accumsan dolor, quis fringilla eros luctus id.</p>
+                <p>Nunc pellentesque ipsum quis gravida imperdiet. Ut pretium non nulla non rhoncus. Duis pharetra lacinia nibh, id rutrum magna dapibus id. Nullam et justo suscipit, ornare urna quis, rhoncus erat. Phasellus non augue mattis, pretium dolor sed, vestibulum arcu. Aliquam convallis justo pulvinar, iaculis elit vitae, mattis nisl. In tempus, est quis pharetra luctus, est tortor finibus nisi, at ullamcorper sem nunc venenatis mi. Morbi vulputate lectus quam, sed auctor sem pharetra at. Ut nec blandit felis, vel elementum massa. Vestibulum et ante quis mauris gravida placerat nec non diam. Duis ullamcorper metus nec erat ullamcorper, convallis pulvinar sapien venenatis. Quisque eu purus id libero hendrerit vulputate id ac lacus. Curabitur in nunc nec urna scelerisque efficitur eget a mauris. Quisque auctor ut ex a gravida.</p>
+              </div>
+              <p>Notable Relationships</p>
+              <div id="notableRelationshipsBlurb" class="rpgui-container framed-grey infoSection" style="height:100px">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget ante id augue eleifend vestibulum. In pellentesque, erat sed pulvinar auctor, massa quam pharetra sem, eget iaculis est sem at ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer eu arcu quis metus vestibulum commodo eu non est. Praesent neque lacus, finibus eget facilisis a, bibendum vel enim. Fusce dui diam, sodales non porttitor ut, egestas id dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris sit amet mi eget risus placerat accumsan.</p>
+                <p><a href="test">Proin</a> purus enim, maximus eu tellus a, luctus euismod erat. Curabitur molestie iaculis fermentum. Ut ac est vulputate, venenatis odio fringilla, maximus nulla. Cras facilisis bibendum sem, finibus vestibulum lorem rutrum ac. Aliquam aliquet nisi eu metus euismod, non elementum dui lobortis. Proin tempor nulla eu sollicitudin vulputate. Proin viverra ligula quis nibh maximus interdum et nec diam. Sed fermentum libero et malesuada eleifend. Aenean lacus dolor, suscipit in nibh vitae, feugiat cursus tortor. Vestibulum ut efficitur diam. Vivamus eu lacinia leo. Praesent posuere consequat pretium. Nam eros tellus, laoreet id interdum eu, dictum sit amet velit. Nunc sit amet mattis tortor. Quisque lobortis interdum ante efficitur porta. Pellentesque at nisi id purus lacinia euismod vel quis nunc.</p>
+                <p>Sed malesuada est ipsum, et consequat metus porta at. Aliquam maximus luctus porttitor. Nulla id dignissim diam. Nulla at justo ut elit laoreet semper rutrum pretium tortor. Duis ornare consectetur consequat. Aenean consectetur feugiat augue vitae pharetra. Mauris erat velit, rutrum a porttitor id, mattis id mi. Sed feugiat accumsan dolor, quis fringilla eros luctus id.</p>
+                <p>Nunc pellentesque ipsum quis gravida imperdiet. Ut pretium non nulla non rhoncus. Duis pharetra lacinia nibh, id rutrum magna dapibus id. Nullam et justo suscipit, ornare urna quis, rhoncus erat. Phasellus non augue mattis, pretium dolor sed, vestibulum arcu. Aliquam convallis justo pulvinar, iaculis elit vitae, mattis nisl. In tempus, est quis pharetra luctus, est tortor finibus nisi, at ullamcorper sem nunc venenatis mi. Morbi vulputate lectus quam, sed auctor sem pharetra at. Ut nec blandit felis, vel elementum massa. Vestibulum et ante quis mauris gravida placerat nec non diam. Duis ullamcorper metus nec erat ullamcorper, convallis pulvinar sapien venenatis. Quisque eu purus id libero hendrerit vulputate id ac lacus. Curabitur in nunc nec urna scelerisque efficitur eget a mauris. Quisque auctor ut ex a gravida.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+
+      <div id="lifeSkillsExperienceCard"></div>
+      <div class="inner rpgui-container framed sooshARPGCard">
+        <h2>Life Skills Experience</h2>
+        <hr />
+        <div class="horizontalFlex">
+          <div id="lifeSkillsExperience">
+            <label><div class="progressBarFlex"><div>Novice Alchemy:</div><div>0/100</div></div></label>
+            <div id="currentSooshAlchemy"><div class="rpgui-progress red" data-rpguitype="progress"><div class=" rpgui-progress-track"><div class=" rpgui-progress-fill red" style="left: 0px; width: 0%;"></div></div><div class=" rpgui-progress-left-edge"></div><div class=" rpgui-progress-right-edge"></div></div></div>
+            <label><div class="progressBarFlex"><div>Expert Angling:</div><div>900/1300</div></div></label>
+            <div id="currentSooshAngling"><div class="rpgui-progress red" data-rpguitype="progress"><div class=" rpgui-progress-track"><div class=" rpgui-progress-fill red" style="left: 0px; width: 20%;"></div></div><div class=" rpgui-progress-left-edge"></div><div class=" rpgui-progress-right-edge"></div></div></div>
+            <label><div class="progressBarFlex"><div>Apprentice Hunting:</div><div>9/500</div></div></label>
+            <div id="currentSooshHunting"><div class="rpgui-progress red" data-rpguitype="progress"><div class=" rpgui-progress-track"><div class=" rpgui-progress-fill red" style="left: 0px; width: 30%;"></div></div><div class=" rpgui-progress-left-edge"></div><div class=" rpgui-progress-right-edge"></div></div></div>
+            <label><div class="progressBarFlex"><div>Test Gathering:</div><div>0/100</div></div></label>
+            <div id="currentSooshGathering"><div class="rpgui-progress red" data-rpguitype="progress"><div class=" rpgui-progress-track"><div class=" rpgui-progress-fill red" style="left: 0px; width: 40%;"></div></div><div class=" rpgui-progress-left-edge"></div><div class=" rpgui-progress-right-edge"></div></div></div>
+            <label><div class="progressBarFlex"><div>Novice Mining:</div><div>0/100</div></div></label>
+            <div id="currentSooshMining"><div class="rpgui-progress red" data-rpguitype="progress"><div class=" rpgui-progress-track"><div class=" rpgui-progress-fill red" style="left: 0px; width: 50%;"></div></div><div class=" rpgui-progress-left-edge"></div><div class=" rpgui-progress-right-edge"></div></div></div>
+            <label><div class="progressBarFlex"><div>Novice Wood-Cutting:</div><div>0/100</div></div></label>
+            <div id="currentSooshWoodcutting"><div class="rpgui-progress red" data-rpguitype="progress"><div class=" rpgui-progress-track"><div class=" rpgui-progress-fill red" style="left: 0px; width: 100%;"></div></div><div class=" rpgui-progress-left-edge"></div><div class=" rpgui-progress-right-edge"></div></div></div>
+          </div>
+          <div style="max-width:60%;overflow: hidden;position: relative;width: 100%">
+            <div class="rpgui-container framed-grey infoSection" style="height:100%;position:absolute;right:0;top:0;width:100%">
+              <div>
+                <p style="display:inline">Showing</p>
+                <p id="promptDropdown" class="rpgui-dropdown-imp rpgui-dropdown-imp-header" style="display:inline"><label>▼</label> All</p>
+                <ul class="rpgui-dropdown-imp">
+                  <li class="selectedDropdown">All</li>
+                  <li>Prompts Only</li>
+                  <li>Quests Only</li>
+                  <li><span style="color:#DA4444">Alchemy</span> Quests</li>
+                  <li><span style="color:#4CAAC9">Angling</span> Quests</li>
+                  <li><span style="color:#6CB83A">Hunting</span> Quests</li>
+                  <li><span style="color:#D061C7">Gathering</span> Quests</li>
+                  <li><span style="color:#7161D0">Mining</span> Quests</li>
+                  <li><span style="color:#C2743B">Wood-Cutting</span> Quests</li>
+                </ul>
+              </div>
+              <div id="promptsAndQuestsSection" class="Rtable Rtable--2cols">
+                <a href="https://pepper-wood.deviantart.com/art/Soosh-ARPG-Prompt-WOW-THAT-S-SPICY-683239132" class="Rtable-cell rpgui-container framed-grey promptContainer promptContainer-prompt">
+                  <span class="promptContainerTitle">May 2017</span>
+                  <img src="https://img00.deviantart.net/0d31/i/2017/180/b/7/_soosharpg_prompt__summer_with_kumo_and_lottie_by_pepper_wood-dbehp7g.png">
+                </a>
+
+                <a href="https://pepper-wood.deviantart.com/art/Soosh-ARPG-Prompt-WOW-THAT-S-SPICY-683239132" class="Rtable-cell rpgui-container framed-grey promptContainer promptContainer-quest promptContainer-angling">
+                  <span class="promptContainerTitle">Angling</span>
+                  <img src="https://orig00.deviantart.net/c07e/f/2017/120/4/a/april_prompt_by_pepper_wood-db7pekv.png">
+                </a>
+
+                <a href="https://pepper-wood.deviantart.com/art/Soosh-ARPG-Prompt-WOW-THAT-S-SPICY-683239132" class="Rtable-cell rpgui-container framed-grey promptContainer promptContainer-quest promptContainer-alchemy">
+                  <span class="promptContainerTitle">Alchemy 1</span>
+                  <img src="https://orig00.deviantart.net/7aba/f/2017/148/a/0/_soosh_arpg___prompt__wow_that_s_spicy_by_pepper_wood-dbas6os.png">
+                </a>
+
+                <a href="https://pepper-wood.deviantart.com/art/Soosh-ARPG-Prompt-WOW-THAT-S-SPICY-683239132" class="Rtable-cell rpgui-container framed-grey promptContainer promptContainer-quest promptContainer-woodCutting">
+                  <span class="promptContainerTitle">Wood Cutting</span>
+                  <img src="https://img00.deviantart.net/0d31/i/2017/180/b/7/_soosharpg_prompt__summer_with_kumo_and_lottie_by_pepper_wood-dbehp7g.png">
+                </a>
+
+                <a href="https://pepper-wood.deviantart.com/art/Soosh-ARPG-Prompt-WOW-THAT-S-SPICY-683239132" class="Rtable-cell rpgui-container framed-grey promptContainer promptContainer-quest promptContainer-alchemy">
+                  <span class="promptContainerTitle">Alchemy 2</span>
+                  <img src="https://orig00.deviantart.net/c07e/f/2017/120/4/a/april_prompt_by_pepper_wood-db7pekv.png">
+                </a>
+
+                <a href="https://pepper-wood.deviantart.com/art/Soosh-ARPG-Prompt-WOW-THAT-S-SPICY-683239132" class="Rtable-cell rpgui-container framed-grey promptContainer promptContainer-prompt">
+                  <span class="promptContainerTitle">June 2017</span>
+                  <img src="https://orig00.deviantart.net/7aba/f/2017/148/a/0/_soosh_arpg___prompt__wow_that_s_spicy_by_pepper_wood-dbas6os.png">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="inventoryCard"></div>
+      <div class="inner rpgui-container framed sooshARPGCard">
+        <div class="progressBarFlex">
+          <div><button id="inventoryToggle" type="button" class="rpgui-button down"><p>Inventory</p></button></div>
+          <div><button id="craftingToggle" type="button" class="rpgui-button"><p>Crafting</p></button></div>
+          <div><button id="bandanaToggle" type="button" class="rpgui-button"><p>Bandana</p></button></div>
+        </div>
+        <hr />
+        <div class="horizontalFlex_fixed">
+          <div>
+            <div class="rpgui-container framed-grey">
+              <div class="rpgui-container framed" style="padding:0;width:80%;margin:0 auto">
+                <img id="inventoryPreviewImage" src="img/transparentImage.png" style="width:100%">
+              </div>
+              <div id="inventoryPreviewText" style="display:none;margin-top:10px"></div>
+            </div>
+          </div>
+
+          <div>
+            <div id="inventoryContent"></div>
+            <div id="craftingContent" style="display:none"></div>
+            <div id="bandanaContent" style="display:none"></div>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="achievementsCard"></div>
+      <div class="inner rpgui-container framed sooshARPGCard">
+        <h2>Achievements</h2>
+        <hr />
+        <div class="horizontalFlex">
+          <div>
+    				<p style="display:inline">View</p>
+            <p id="achievementDropdown" class="rpgui-dropdown-imp rpgui-dropdown-imp-header" style="display:inline"><label>▼</label> All</p>
+            <ul class="rpgui-dropdown-imp">
+              <li class="selectedDropdown">All</li>
+              <li>Unlocked</li>
+              <li>Tutorial</li>
+              <li>Exclusive</li>
+              <li>Quest</li>
+              <li>Life Skills</li>
+              <li>Locked</li>
+            </ul>
+            <p style="display:inline">Achievements</p>
+          </div>
+          <div id="achievementsProgressBars" style="text-align:right"></div>
+        </div>
+        <div id="achievementsSection"></div>
+      </div>
+
     </div>
   </div>
 
   <!-- JavaScripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script type="text/javascript" src="js/tabletop.js"></script>
-  <script src="js/taffy.js"></script>
-  <script src="js/rpgui.js"></script>
-  <script type="text/javascript">
-    var public_spreadsheet_url = "https://docs.google.com/spreadsheets/d/1xUaU5i38rzwjQCs5RRwAQUIa6kpNcTFtlSSp_Tr80nE/edit?usp=sharing";
-    $(document).ready( function() {
-      Tabletop.init( { key: public_spreadsheet_url,
-                       callback: showInfo } );
-    });
-
-    function showInfo(data, tabletop) {
-      var currentSoosh;
-      var currentSooshUsername = window.location.search;
-      currentSooshUsername = currentSooshUsername.replace("?username=","");
-      $.each( tabletop.sheets("Sheet1").all(), function(i, soosh) {
-        if (soosh.username == currentSooshUsername) {
-          currentSoosh = { "username":soosh.username,
-                           "status":soosh.status,
-                           "sooshName":soosh.sooshName,
-                           "village":soosh.village,
-                           "promptCount":soosh.promptCount,
-                           "totalExp":soosh.totalExp,
-                           "swirlSeeds":soosh.swirlSeeds,
-                           "questCount":soosh.questCount,
-                           "achieveCount":soosh.achieveCount,
-                           "hotStreak":soosh.hotStreak,
-                           "alchemy":soosh.alchemy,
-                           "angling":soosh.angling,
-                           "hunting":soosh.hunting,
-                           "gathering":soosh.gathering,
-                           "mining":soosh.mining,
-                           "woodcutting":soosh.woodcutting
-                         };
-          var progressBarColors = {novice:"red",rookie:"yellow",apprentice:"green",whiz:"blue",genius:"IDK",master:"IDK",hero:"IDK"};
-          document.title = "SooshARPG | " + currentSoosh.sooshName;
-          $("#currentSooshName").text(currentSoosh.sooshName);
-          $("#currentSooshUsername").text(currentSoosh.username);
-          $("#currentSooshAlchemy").html("<div class=\"rpgui-progress " + progressBarColors[currentSoosh.alchemy] + "\" data-rpguitype=\"progress\"><div class=\" rpgui-progress-track\"><div class=\" rpgui-progress-fill " + progressBarColors[currentSoosh.alchemy] + "\" style=\"left: 0px; width: 100%;\"></div></div><div class=\" rpgui-progress-left-edge\"></div><div class=\" rpgui-progress-right-edge\"></div></div>");
-          $("#currentSooshAngling").html("<div class=\"rpgui-progress " + progressBarColors[currentSoosh.angling] + "\" data-rpguitype=\"progress\"><div class=\" rpgui-progress-track\"><div class=\" rpgui-progress-fill " + progressBarColors[currentSoosh.angling] + "\" style=\"left: 0px; width: 100%;\"></div></div><div class=\" rpgui-progress-left-edge\"></div><div class=\" rpgui-progress-right-edge\"></div></div>");
-          $("#currentSooshHunting").html("<div class=\"rpgui-progress " + progressBarColors[currentSoosh.hunting] + "\" data-rpguitype=\"progress\"><div class=\" rpgui-progress-track\"><div class=\" rpgui-progress-fill " + progressBarColors[currentSoosh.hunting] + "\" style=\"left: 0px; width: 100%;\"></div></div><div class=\" rpgui-progress-left-edge\"></div><div class=\" rpgui-progress-right-edge\"></div></div>");
-          $("#currentSooshGathering").html("<div class=\"rpgui-progress " + progressBarColors[currentSoosh.gathering] + "\" data-rpguitype=\"progress\"><div class=\" rpgui-progress-track\"><div class=\" rpgui-progress-fill " + progressBarColors[currentSoosh.gathering] + "\" style=\"left: 0px; width: 100%;\"></div></div><div class=\" rpgui-progress-left-edge\"></div><div class=\" rpgui-progress-right-edge\"></div></div>");
-          $("#currentSooshMining").html("<div class=\"rpgui-progress " + progressBarColors[currentSoosh.mining] + "\" data-rpguitype=\"progress\"><div class=\" rpgui-progress-track\"><div class=\" rpgui-progress-fill " + progressBarColors[currentSoosh.mining] + "\" style=\"left: 0px; width: 100%;\"></div></div><div class=\" rpgui-progress-left-edge\"></div><div class=\" rpgui-progress-right-edge\"></div></div>");
-          $("#currentSooshWoodcutting").html("<div class=\"rpgui-progress " + progressBarColors[currentSoosh.woodcutting] + "\" data-rpguitype=\"progress\"><div class=\" rpgui-progress-track\"><div class=\" rpgui-progress-fill " + progressBarColors[currentSoosh.woodcutting] + "\" style=\"left: 0px; width: 100%;\"></div></div><div class=\" rpgui-progress-left-edge\"></div><div class=\" rpgui-progress-right-edge\"></div></div>");
-          return;
-        }
-      });
-    }
-  </script>
+  <script type="text/javascript" src="js/taffy.js"></script>
+  <script type="text/javascript" src="js/sooshDatabaseParsing.js"></script>
+  <script src="js/smooth-scroll.js"></script>
+  <script src="js/interactiveElements.js"></script>
 </body>
 </html>

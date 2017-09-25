@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +9,11 @@
   <link rel="stylesheet" href="css/rpguiSoosh.css">
   <link rel="stylesheet" href="css/templateDesktop.css">
   <link rel="stylesheet" href="css/templateMobile.css">
+  <style>
+    body {
+      background-image: url("http://media.tumblr.com/47b338ec85e40f93a828c8274c25684f/tumblr_inline_mns3s3HwX11qz4rgp.jpg")
+    }
+  </style>
 </head>
 <body>
 
@@ -78,7 +82,7 @@
         <h2>Life Skills Experience</h2>
         <hr />
         <div class="horizontalFlex">
-          <div>
+          <div id="lifeSkillsExperience">
             <label><div class="progressBarFlex"><div>Novice Alchemy:</div><div>0/100</div></div></label>
             <div id="currentSooshAlchemy"><div class="rpgui-progress red" data-rpguitype="progress"><div class=" rpgui-progress-track"><div class=" rpgui-progress-fill red" style="left: 0px; width: 0%;"></div></div><div class=" rpgui-progress-left-edge"></div><div class=" rpgui-progress-right-edge"></div></div></div>
             <label><div class="progressBarFlex"><div>Expert Angling:</div><div>900/1300</div></div></label>
@@ -92,8 +96,58 @@
             <label><div class="progressBarFlex"><div>Novice Wood-Cutting:</div><div>0/100</div></div></label>
             <div id="currentSooshWoodcutting"><div class="rpgui-progress red" data-rpguitype="progress"><div class=" rpgui-progress-track"><div class=" rpgui-progress-fill red" style="left: 0px; width: 100%;"></div></div><div class=" rpgui-progress-left-edge"></div><div class=" rpgui-progress-right-edge"></div></div></div>
           </div>
-          <div>
-            <p>this will be where prompts will go
+          <div style="max-width:60%;overflow: hidden;position: relative;width: 100%">
+            <div class="rpgui-container framed-grey infoSection" style="height:100%;position:absolute;right:0;top:0;width:100%">
+              <div>
+                <!-- kathryn -->
+                <p style="display:inline">Showing</p>
+                <p id="promptDropdown" class="rpgui-dropdown-imp rpgui-dropdown-imp-header" style="display:inline"><label>▼</label> All</p>
+                <ul class="rpgui-dropdown-imp">
+                  <li class="selectedDropdown">All</li>
+                  <li>Prompts Only</li>
+                  <li>Quests Only</li>
+                  <li><span style="color:#DA4444">Alchemy</span> Quests</li>
+                  <li><span style="color:#4CAAC9">Angling</span> Quests</li>
+                  <li><span style="color:#6CB83A">Hunting</span> Quests</li>
+                  <li><span style="color:#D061C7">Gathering</span> Quests</li>
+                  <li><span style="color:#7161D0">Mining</span> Quests</li>
+                  <li><span style="color:#C2743B">Wood-Cutting</span> Quests</li>
+                </ul>
+              </div>
+
+              <div class="Rtable Rtable--2cols">
+                <a href="https://pepper-wood.deviantart.com/art/Soosh-ARPG-Prompt-WOW-THAT-S-SPICY-683239132" class="Rtable-cell rpgui-container framed-grey promptContainer promptContainer-prompt">
+                  <span class="promptContainerTitle">May 2017</span>
+                  <img src="https://img00.deviantart.net/0d31/i/2017/180/b/7/_soosharpg_prompt__summer_with_kumo_and_lottie_by_pepper_wood-dbehp7g.png">
+                </a>
+
+                <a href="https://pepper-wood.deviantart.com/art/Soosh-ARPG-Prompt-WOW-THAT-S-SPICY-683239132" class="Rtable-cell rpgui-container framed-grey promptContainer promptContainer-quest promptContainer-angling">
+                  <span class="promptContainerTitle">Angling</span>
+                  <img src="https://orig00.deviantart.net/c07e/f/2017/120/4/a/april_prompt_by_pepper_wood-db7pekv.png">
+                </a>
+
+                <a href="https://pepper-wood.deviantart.com/art/Soosh-ARPG-Prompt-WOW-THAT-S-SPICY-683239132" class="Rtable-cell rpgui-container framed-grey promptContainer promptContainer-quest promptContainer-alchemy">
+                  <span class="promptContainerTitle">Alchemy 1</span>
+                  <img src="https://orig00.deviantart.net/7aba/f/2017/148/a/0/_soosh_arpg___prompt__wow_that_s_spicy_by_pepper_wood-dbas6os.png">
+                </a>
+
+                <a href="https://pepper-wood.deviantart.com/art/Soosh-ARPG-Prompt-WOW-THAT-S-SPICY-683239132" class="Rtable-cell rpgui-container framed-grey promptContainer promptContainer-quest promptContainer-woodCutting">
+                  <span class="promptContainerTitle">Wood Cutting</span>
+                  <img src="https://img00.deviantart.net/0d31/i/2017/180/b/7/_soosharpg_prompt__summer_with_kumo_and_lottie_by_pepper_wood-dbehp7g.png">
+                </a>
+
+                <a href="https://pepper-wood.deviantart.com/art/Soosh-ARPG-Prompt-WOW-THAT-S-SPICY-683239132" class="Rtable-cell rpgui-container framed-grey promptContainer promptContainer-quest promptContainer-alchemy">
+                  <span class="promptContainerTitle">Alchemy 2</span>
+                  <img src="https://orig00.deviantart.net/c07e/f/2017/120/4/a/april_prompt_by_pepper_wood-db7pekv.png">
+                </a>
+
+                <a href="https://pepper-wood.deviantart.com/art/Soosh-ARPG-Prompt-WOW-THAT-S-SPICY-683239132" class="Rtable-cell rpgui-container framed-grey promptContainer promptContainer-prompt">
+                  <span class="promptContainerTitle">June 2017</span>
+                  <img src="https://orig00.deviantart.net/7aba/f/2017/148/a/0/_soosh_arpg___prompt__wow_that_s_spicy_by_pepper_wood-dbas6os.png">
+                </a>
+
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -263,7 +317,7 @@
         <div class="horizontalFlex">
           <div>
     				<p style="display:inline">View</p>
-            <p class="rpgui-dropdown-imp rpgui-dropdown-imp-header" style="display:inline"><label>▼</label> Unlocked</p>
+            <p id="achievementDropdown" class="rpgui-dropdown-imp rpgui-dropdown-imp-header" style="display:inline"><label>▼</label> Unlocked</p>
             <ul class="rpgui-dropdown-imp">
               <li>All</li>
               <li class="selectedDropdown">Unlocked</li>
@@ -428,212 +482,12 @@
 
   <!-- JavaScripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <!-- <script src="js/rpguiSoosh.js"></script> -->
-  <script src="js/smooth-scroll.js"></script>
-  <script>
-    //var scroll = new SmoothScroll();
-    var scroll = new SmoothScroll('.some-selector',{header: '[data-scroll-header]'});
-    var smoothScrollWithoutHash = function (selector, settings) {
-    	var clickHandler = function (event) {
-    		var toggle = event.target.closest( selector );
-    		if ( !toggle || toggle.tagName.toLowerCase() !== 'a' ) return;
-    		var anchor = document.querySelector( toggle.hash );
-    		if ( !anchor ) return;
-    		event.preventDefault();
-    		scroll.animateScroll( anchor, toggle, settings || {} );
-    	};
-    	window.addEventListener('click', clickHandler, false );
-    };
-    smoothScrollWithoutHash( 'a[href*="#"]' );
-  </script>
   <script>
     $(document).ready(function() {
       $("#favicon").attr("href","https://realfavicongenerator.net/blog/wp-content/uploads/2015/10/demo_favicon.png");
     });
-    $("#inventoryToggle").click(function(){
-      if (!$(this).hasClass("down")) {
-        $(".inventoryItem").removeClass("selectedItem");
-        $("#inventoryPreviewImage").fadeOut(300, function() {
-          $("#inventoryPreviewImage").attr("src","img/transparentImage.png").fadeIn(300);
-        });
-        $("#inventoryPreviewText").slideUp(300);
-        $("#craftingToggle").removeClass("down");
-        $("#bandanaToggle").removeClass("down");
-        $(this).addClass("down");
-        $("#craftingContent").slideUp();
-        $("#craftingContent .quantity").fadeOut();
-        $("#bandanaContent").slideUp();
-        $("#bandanaContent .quantity").fadeOut();
-        $("#inventoryContent").slideDown();
-        $("#inventoryContent .quantity").fadeIn();
-      }
-    });
-    $("#craftingToggle").click(function(){
-      if (!$(this).hasClass("down")) {
-        $(".inventoryItem").removeClass("selectedItem");
-        $("#inventoryPreviewImage").fadeOut(300, function() {
-          $("#inventoryPreviewImage").attr("src","img/transparentImage.png").fadeIn(300);
-        });
-        $("#inventoryPreviewText").slideUp(300);
-        $("#inventoryToggle").removeClass("down");
-        $("#bandanaToggle").removeClass("down");
-        $(this).addClass("down");
-        $("#inventoryContent").slideUp();
-        $("#inventoryContent .quantity").fadeOut();
-        $("#bandanaContent").slideUp();
-        $("#bandanaContent .quantity").fadeOut();
-        $("#craftingContent").slideDown();
-        $("#craftingContent .quantity").fadeIn();
-      }
-    });
-    $("#bandanaToggle").click(function(){
-      if (!$(this).hasClass("down")) {
-        $(".inventoryItem").removeClass("selectedItem");
-        $("#inventoryPreviewImage").fadeOut(300, function() {
-          $("#inventoryPreviewImage").attr("src","img/transparentImage.png").fadeIn(300);
-        });
-        $("#inventoryPreviewText").slideUp(300);
-        $("#inventoryToggle").removeClass("down");
-        $("#craftingToggle").removeClass("down");
-        $(this).addClass("down");
-        $("#inventoryContent").slideUp();
-        $("#inventoryContent .quantity").fadeOut();
-        $("#craftingContent").slideUp();
-        $("#craftingContent .quantity").fadeOut();
-        $("#bandanaContent").slideDown();
-        $("#bandanaContent .quantity").fadeIn();
-      }
-    });
-    $(".rpgui-dropdown-imp-header").click(function() {
-      $(this).next().css("left",$(".rpgui-dropdown-imp-header").offset().left);
-      $(this).next().css("display","block");
-    });
-    $("ul.rpgui-dropdown-imp>li").click(function() {
-      if (("<label>▼</label> " + $(this).text()) != ($(this).parent().prev().html())) {
-        toggleAchievements($(this).text());
-        $(this).parent().prev().html("<label>▼</label> " + $(this).text());
-        $(this).parent().children().removeClass("selectedDropdown");
-        $(this).addClass("selectedDropdown");
-      }
-      $(this).parent().css("display","none");
-    });
-    $(document).mouseup(function(e) {
-      var container = $("ul.rpgui-dropdown-imp");
-      if ((!container.is(e.target) && container.has(e.target).length === 0)) {
-        container.hide();
-      }
-    });
-    function toggleAchievements(achieveType) {
-      achieveType = achieveType.toLowerCase().replace(/\s/g, '');
-      if (achieveType == "all") {
-        $(".achievementBanner").slideDown();
-        if ($(".all-achievement-progress").css("display") == "none") {
-          $(".achievement-progress").slideUp();
-          $(".all-achievement-progress").slideDown();
-        }
-      } else if (achieveType == "unlocked") {
-        $(".locked-achievement").slideUp();
-        $(".achievementBanner").not(".locked-achievement").slideDown();
-        if ($(".all-achievement-progress").css("display") == "none") {
-          $(".achievement-progress").slideUp();
-          $(".all-achievement-progress").slideDown();
-        }
-      } else {
-        achieveType = "." + achieveType + "-achievement";
-        $(".achievementBanner").not(achieveType).slideUp();
-        $(achieveType).slideDown();
-        achieveType += "-progress";
-        $(".achievement-progress").slideUp();
-        $(achieveType).slideDown();
-      }
-    }
-    $(".inventoryItem").click(function() {
-      if ($(this).hasClass("selectedItem")) {
-        $(this).removeClass("selectedItem");
-        $("#inventoryPreviewImage").fadeOut(300, function() {
-          $("#inventoryPreviewImage").attr("src","img/transparentImage.png").fadeIn(300);
-        });
-        $("#inventoryPreviewText").slideUp(300);
-      } else {
-        $(".inventoryItem").removeClass("selectedItem");
-        $(this).addClass("selectedItem");
-        var newImage = $(this).children(".inventoryTooltipImage").text();
-        var newText = $(this).children(".inventoryTooltipText").html();
-        if ($("#inventoryPreviewImage").attr("src") == "img/transparentImage.png") {
-          $("#inventoryPreviewImage").fadeOut(0, function() {
-            $("#inventoryPreviewImage").attr("src",newImage).fadeIn(300);
-          });
-          $("#inventoryPreviewText").html(newText);
-          $("#inventoryPreviewText").slideDown(300);
-        } else {
-          $("#inventoryPreviewImage").fadeOut(300, function() {
-            $("#inventoryPreviewImage").attr("src",newImage).fadeIn(300);
-          });
-          $("#inventoryPreviewText").fadeOut(300, function() {
-            $(this).html(newText).fadeIn(300);
-          });
-        }
-      }
-    });
-    $(".craftingItem").click(function() {
-      if ($(this).hasClass("selectedItem")) {
-        $(this).removeClass("selectedItem");
-        $("#inventoryPreviewImage").fadeOut(300, function() {
-          $("#inventoryPreviewImage").attr("src","img/transparentImage.png").fadeIn(300);
-        });
-        $("#inventoryPreviewText").slideUp(300);
-      } else {
-        $(".craftingItem").removeClass("selectedItem");
-        $(this).addClass("selectedItem");
-        var newImage = $(this).children(".craftingTooltipImage").text();
-        var newText = $(this).children(".craftingTooltipText").html();
-        if ($("#inventoryPreviewImage").attr("src") == "img/transparentImage.png") {
-          $("#inventoryPreviewImage").fadeOut(0, function() {
-            $("#inventoryPreviewImage").attr("src",newImage).fadeIn(300);
-          });
-          $("#inventoryPreviewText").html(newText);
-          $("#inventoryPreviewText").slideDown(300);
-        } else {
-          $("#inventoryPreviewImage").fadeOut(300, function() {
-            $("#inventoryPreviewImage").attr("src",newImage).fadeIn(300);
-          });
-          $("#inventoryPreviewText").fadeOut(300, function() {
-            $(this).html(newText).fadeIn(300);
-          });
-        }
-      }
-    });
-    $(".bandanaItem").click(function() {
-      if ($(this).hasClass("selectedItem")) {
-        $(this).removeClass("selectedItem");
-        $("#inventoryPreviewImage").fadeOut(300, function() {
-          $("#inventoryPreviewImage").attr("src","img/transparentImage.png").fadeIn(300);
-        });
-        $("#inventoryPreviewText").slideUp(300);
-      } else {
-        $(".bandanaItem").removeClass("selectedItem");
-        $(this).addClass("selectedItem");
-        var newImage = $(this).children(".bandanaTooltipImage").text();
-        var newText = $(this).children(".bandanaTooltipText").html();
-        if ($("#inventoryPreviewImage").attr("src") == "img/transparentImage.png") {
-          $("#inventoryPreviewImage").fadeOut(0, function() {
-            $("#inventoryPreviewImage").attr("src",newImage).fadeIn(300);
-          });
-          $("#inventoryPreviewText").html(newText);
-          $("#inventoryPreviewText").slideDown(300);
-        } else {
-          $("#inventoryPreviewImage").fadeOut(300, function() {
-            $("#inventoryPreviewImage").attr("src",newImage).fadeIn(300);
-          });
-          $("#inventoryPreviewText").fadeOut(300, function() {
-            $(this).html(newText).fadeIn(300);
-          });
-        }
-      }
-    });
-    function openGenerator() {
-      alert("yay!");
-    }
   </script>
+  <script src="js/smooth-scroll.js"></script>
+  <script src="js/interactiveElements.js"></script>
 </body>
 </html>
