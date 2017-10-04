@@ -1,9 +1,9 @@
 var public_spreadsheet_url = "https://docs.google.com/spreadsheets/d/1xUaU5i38rzwjQCs5RRwAQUIa6kpNcTFtlSSp_Tr80nE/edit?usp=sharing";
 var a,b;
-var SPICY_COLOR = "#FF0000";
-var BITTER_COLOR = "#0000FF";
-var SWEET_COLOR = "#FF00FF";
-var SAVORY_COLOR = "#00FF00";
+var SPICY_COLOR = "#ff7043";
+var BITTER_COLOR = "#5e35b1";
+var SWEET_COLOR = "#f48fb1";
+var SAVORY_COLOR = "#80cbc4";
 
 // public Taffies
 var expLevels = TAFFY();
