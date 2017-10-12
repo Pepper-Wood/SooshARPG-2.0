@@ -85,9 +85,20 @@
       });
 
 
+      var SPICY_COLOR = "#ff7043";
+      var BITTER_COLOR = "#5e35b1";
+      var SWEET_COLOR = "#f48fb1";
+      var SAVORY_COLOR = "#80cbc4";
       var pageString = "<div class=\"Rtable Rtable--4cols\">";
       sooshARPGDirectory().order("sooshName asec").each(function (soosh) {
-        pageString += "<div class=\"Rtable-cell rpgui-container framed-grey\">";
+        if (soosh.spreadsheetURL != "x") {
+          if (soosh.village == "Spicy") { pageString += "<div class=\"Rtable-cell rpgui-container framed-grey\" style='background:" + SPICY_COLOR + "'>"; }
+          else if (soosh.village == "Bitter") { pageString += "<div class=\"Rtable-cell rpgui-container framed-grey\" style='background:" + BITTER_COLOR + "'>"; }
+          else if (soosh.village == "Sweet") { pageString += "<div class=\"Rtable-cell rpgui-container framed-grey\" style='background:" + SWEET_COLOR + "'>"; }
+          else if (soosh.village == "Savory") { pageString += "<div class=\"Rtable-cell rpgui-container framed-grey\" style='background:" + SAVORY_COLOR + "'>"; }
+        } else {
+          pageString += "<div class=\"Rtable-cell rpgui-container framed-grey\">";
+        }
         pageString += "<p>" + soosh.username + "</p>";
         if (soosh.sooshName != "") {
           pageString += "<a href=\"soosh.html?username=" + soosh.username + "\"><button type=\"button\" class=\"rpgui-button\"><p>" + soosh.sooshName + "</p></button></a>";
