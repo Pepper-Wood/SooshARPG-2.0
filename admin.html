@@ -1,44 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Kumo and Lottie | SooshARPG Database</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link id="favicon" rel="shortcut icon" type="image/png" href="http://is5.mzstatic.com/image/thumb/Purple111/v4/67/5a/15/675a1530-900b-6edd-509a-a3d4ac8df10a/source/175x175bb.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/rpguiSoosh.css">
-  <link rel="stylesheet" href="css/templateDesktop.css">
-  <link rel="stylesheet" href="css/templateMobile.css">
+    <title>Admin Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link id="favicon" rel="shortcut icon" type="image/png" href="http://is5.mzstatic.com/image/thumb/Purple111/v4/67/5a/15/675a1530-900b-6edd-509a-a3d4ac8df10a/source/175x175bb.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="http://materializecss.com/css/ghpages-materialize.css" rel="stylesheet">
+    <link href="css/admin.css" rel="stylesheet">
 </head>
 <body>
-  <a href="index.html">Index page</a>
+    <div class="loginWrapper">
+        <div class="loginSection z-depth-3">
+            <h2>SooshARPG</h2>
+            <p>Admin Dashboard</p>
+            <input id="sooshPW" type="password" class="validate" placeholder="Password" style="margin-bottom:0">
+            <p id="errorText" class="errorText">&nbsp;<span>The password you entered was incorrect</span>&nbsp;</p>
+            <a id="sooshLoginButton" class="blockBtn waves-effect waves-light btn-large">Login</a>
+        </div>
+    </div>
 
-  <input type="password" id="sooshPW" autofocus="autofocus" placeholder="Enter password">
-  <p id="hashresult"></p>
+    <ul id="navigation-tabs" class="tabs z-depth-1" data-scroll-header>
+        <li class="tab col s3"><a class="active" href="#dailiesRollerFlag">Dailies Roller</a></li>
+        <li class="tab col s3"><a href="#villagePersonalityTestFlag">Village Personality Test</a></li>
+        <li class="tab col s3"><a href="#databaseDescriptionGeneratorFlag">(WIP) Database Description Generator</a></li>
+    </ul>
+    <div class="container">
+        <div id="dailiesRollerFlag"></div>
+        <div id="dailiesRoller" class="col s12 headerBuffer">
+            <h3>Dailies Roller</h3>
 
-  <!-- JavaScripts -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script>
-  String.prototype.hashCode = function(){
-    var hash = 0;
-    if (this.length == 0) return hash;
-    for (var i = 0; i < this.length; i++) {
-        var character = this.charCodeAt(i);
-        hash = ((hash<<5)-hash)+character;
-        hash = hash & hash; // Convert to 32bit integer
-    }
-    return hash;
-  }
-  $("#sooshPW").keyup(function(e){
-    if (e.keyCode == 13) {
-      var val = -1242226110;
-      if ($("#sooshPW").val().hashCode() == val) {
-      	$("#hashresult").text("true");
-      } else {
-      	$("#hashresult").text("false");
+            <div class="horizontalFlex flexGrow">
+                <div>
+                    <label for="dailyType">Daily Type</label>
+                    <select id="dailyType" class="browser-default">
+                        <option>Crafting</option>
+                        <option>Hunting</option>
+                        <option>Angling</option>
+                        <option>Mining</option>
+                        <option>Wood-Cutting</option>
+                        <option>Gathering</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="locationType">Location</label>
+                    <select id="locationType" class="browser-default">
+                        <option>The Thickets</option>
+                        <option>The Midwoods</option>
+                        <option>The Thorns</option>
+                        <option>Mount Solitude</option>
+                        <option>Lake of Reflections</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-field">
+                <input id="sooshName" type="text" list="sooshNames">
+                <datalist id="sooshNames"></datalist>
+                <label for="sooshName">User :: Soosh's Name</label>
+            </div>
+            <p id="sooshNameError" class="errorText">SooshARPG member not found. Please enter a valid name.</p>
+
+            <div style="margin-top:20px">
+                <label for="inventoryBuff">Success Modifier</label>
+                <div id="inventoryBuff" class="horizontalFlex">
+                    <button type="button" class="btn inactiveBtn waves-effect waves-light">-3</button>
+                    <button type="button" class="btn inactiveBtn waves-effect waves-light">-2</button>
+                    <button type="button" class="btn inactiveBtn waves-effect waves-light">-1</button>
+                    <button type="button" class="btn inactiveBtn waves-effect waves-light activeBtn">0</button>
+                    <button type="button" class="btn inactiveBtn waves-effect waves-light">+1</button>
+                    <button type="button" class="btn inactiveBtn waves-effect waves-light">+2</button>
+                    <button type="button" class="btn inactiveBtn waves-effect waves-light">+3</button>
+                </div>
+            </div>
+            <div class="card" style="margin-top:20px;padding:20px">
+                <div class="horizontalFlex">
+                    <button id="rollDaily" type="button" class="blockBtn waves-effect waves-light btn">Roll Daily</button>
+                    <button type="button" id="copyToClipboard" class="blockBtn waves-effect waves-light btn">Copy to Clipboard</button>
+                </div>
+
+                <label for="dailyOutput">Daily Result</label>
+                <p id="dailyOutput"><br><br><br></p>
+                <p id="copiedToClipboard" class="errorText">Copied to clipboard!</p>
+            </div>
+        </div>
+
+        <div id="villagePersonalityTestFlag"></div>
+        <div id="villagePersonalityTest" class="col s12 headerBuffer">
+            <h3>Village Personality Test</h3>
+            <div class="horizontalFlex">
+                <div style="width:40%;">
+                    <div id="personalityTestSection"></div>
+                    <button type="button" id="sortingHat" class="blockBtn waves-effect waves-light btn">Calculate Village</button>
+                </div>
+                <div style="width:60%">
+                    <div id="chartContainer"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="databaseDescriptionGeneratorFlag"></div>
+        <div id="databaseDescriptionGenerator" class="col s12 headerBuffer">
+            <h3>(WIP) Database Description Generator</h3>
+            <p>Scrapping all my old code; If I do this, I'm starting from scratch</p>
+        </div>
+    </div>
+
+
+
+    <!-- Javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="http://materializecss.com/bin/materialize.js"></script>
+    <script src="js/smooth-scroll.js"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="js/tabletop.js"></script>
+    <script src="js/taffy.js"></script>
+    <script src="http://www.kathryndipippo.com/SooshARPG/js/DAILIESDB.js"></script>
+    <script src="js/adminInteractiveElements.js"></script>
+    <script src="js/newRollDaily.js"></script>
+    <script>
+    var public_spreadsheet_url = "https://docs.google.com/spreadsheets/d/1xUaU5i38rzwjQCs5RRwAQUIa6kpNcTFtlSSp_Tr80nE/edit?usp=sharing";
+    var allSooshNames = [];
+    var sooshARPGDirectory = TAFFY();
+    var statExpLevels = TAFFY();
+    var allItems = TAFFY();
+
+    $("#sooshLoginButton").click(function(e) {
+        handlePassword();
+    });
+    $("#sooshPW").keyup(function(e) {
+        if (e.keyCode == 13) {
+            handlePassword();
+        }
+    });
+    $("#inventoryBuff>button").click(function() {
+        $("#inventoryBuff>button").removeClass("activeBtn");
+        $(this).addClass("activeBtn");
+    });
+    $("#sooshName").click(function() {
+        $("#sooshNameError").slideUp();
+    });
+    $("#rollDaily").click(function() {
+        //rollDaily();
+        newRollDaily();
+    });
+
+  function loadAdmin() {
+    personalityTestSectionHTML = "";
+    questionArray = ["A","B","C","D"];
+    for (i=1; i<11; i++) {
+      personalityTestSectionHTML += "<p><label>Question " + ('0' + i).slice(-2) + "</label>";
+      for (j=0; j<questionArray.length; j++) {
+        //<input name='question1' type='radio' id='question1A' value='A'><label for='question1A'>A</label>
+        personalityTestSectionHTML += "<input name='question" + i + "' type='radio' id='question" + i + "" + questionArray[j] + "' value='" + questionArray[j] + "'><label for='question" + i + "" + questionArray[j] + "'>" + questionArray[j] + "</label>";
       }
+      personalityTestSectionHTML += "</p>";
     }
-  });
+    $("#personalityTestSection").html(personalityTestSectionHTML);
+    Tabletop.init( { key: public_spreadsheet_url, callback: showInfo } );
+  }
+
+  function showInfo(data, tabletop) {
+    $.each( tabletop.sheets("memberOverview").all(), function(i, soosh) {
+      sooshARPGDirectory.insert({ "username":soosh.username,
+                                  "status":soosh.status,
+                                  "sooshName":soosh.sooshName,
+                                  "village":soosh.village,
+                                  "appURL":soosh.appURL,
+                                  "spreadsheetURL":soosh.spreadsheetURL,
+                                  "totalExp":soosh.totalExp,
+                                  "swirlSeeds":soosh.swirlSeeds,
+                                  "achieveCount":soosh.achieveCount,
+                                  "hotStreak":soosh.hotStreak
+      });
+    });
+    $.each( tabletop.sheets("statExpLevels").all(), function(i, entry) {
+        statExpLevels.insert({"id":parseInt(entry.id),
+                              "level":entry.level,
+                              "exp":parseInt(entry.exp),
+                              "runningTotalExp":parseInt(entry.runningTotalExp),
+                              "progress":entry.progress
+        });
+    });
+    $.each( tabletop.sheets("allItems").all(), function(i, entry) {
+      allItems.insert({"name":entry.name,
+                       "smallImgUrl":entry.smallImgUrl,
+                       "bigImgUrl":entry.bigImgUrl,
+                       "lifeSkill":entry.lifeSkill,
+                       "description":entry.description,
+                       "type":entry.type,
+                       "rarity":entry.rarity,
+                       "location":entry.location
+      });
+    });
+    var datalistHTML = "";
+    var sooshStr = "";
+    sooshARPGDirectory().order("sooshName asec").each(function (soosh) {
+      if ((soosh.sooshName != null) && (soosh.sooshName != "")) {
+        sooshStr = soosh.username + " :: " + soosh.sooshName
+        allSooshNames.push(sooshStr);
+        datalistHTML += "<option value='" + sooshStr + "'>";
+      }
+    });
+    $("#sooshNames").html(datalistHTML);
+    console.log(allSooshNames);
+  }
   </script>
 </body>
 </html>
