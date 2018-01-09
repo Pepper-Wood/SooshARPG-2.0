@@ -1,5 +1,12 @@
 var dailyType, locationType, sooshName, successModifier, skillBoost, dieRoll, dailyRollStr;
 var stats = TAFFY();
+var companionHandlingCases = [
+    ["playing catch",
+     "Oh no! Looks like SOOSH got too excited and accidentally hit COMPANION in the head with the ball. Hopefully COMPANION isn't too hurt and angry.\nUnfortunately, they received the NEGATIVE STATUS and lost -20 friendliness exp.",
+     "It seems like COMPANION is getting the hang of it, even if they're not able to throw the ball back at SOOSH accurately.\nThey earned +10 handler exp. and +10 friendliness exp.",
+     "It seems like COMPANION is really good at this! In fact, the two of them wore themselves out from played catch the whole afternoon.\nThey earned +20 handler exp. and +20 friendliness exp",
+     "Wow! COMPANION is a natural at this! Maybe the two of you should consider becoming professional baseball players. COMPANION is excited to play catch again another time.\nThey earned +30 handler exp. and +30 friendliness exp"]
+];
 
 function rollDie(dieSize) {
   return Math.floor((Math.random() * dieSize) + 1);
@@ -122,6 +129,33 @@ function finalRollDaily() {
             printDailyRollResult(true, false, getRockWoodGatheringQuantity(), "Rare", getGatheringCategory());
         else if (dieRoll>=20)
             printDailyRollResult(true, true, getRockWoodGatheringQuantity(), "Rare", getGatheringCategory());
+    } else if (dailyType == "Cooking") {
+        dailyRollStr = "<sub>" + sooshName + " tried their hand at cooking ITEM.\n";
+        if (dieRoll==1)
+            dailyRollStr += "They tried tasting their food and had to immediately spit it out. Oh no! Looks like it got burnt in the cooking process.\nUnfortunately they received the NEGATIVE STATUS.";
+        else if ((dieRoll>=2) && (dieRoll<=6))
+            dailyRollStr += "Looks like they left it on the stove for too long and burnt it. Better luck next time!";
+        else if ((dieRoll>=7) && (dieRoll<=11))
+            dailyRollStr += "It turned out super delicious! In fact, it was so good, your soosh couldn't help themselves and ate the whole thing!\nThey are awarded XX exp.";
+        else if ((dieRoll>=12) && (dieRoll<=19))
+            dailyRollStr += "It turned out super delicious! Good thing they made a big batch or they might have eaten it all.\nThey managed to cook ITEM.\nThey are awarded XX exp.";
+        else if (dieRoll>=20)
+            dailyRollStr += "They cooked up a storm today! With so much delicious food, this is a cause for celebration!\nThey managed to cook ITEM.\nThey are awarded XX exp.\nThey also received the POSITIVE STATUS.";
+        $("#dailyOutput").text(dailyRollStr);
+    } else if (dailyType == "Companion Handling") {
+        currCHCase = companionHandlingCases[0];
+        dailyRollStr = "<sub>" + sooshName + " tried their hand at companion handling with COMPANION. They decided to try " + currCHCase[0] + ".\n";
+        if (dieRoll==1)
+            dailyRollStr += currCHCase[1];
+        else if ((dieRoll>=2) && (dieRoll<=6))
+            dailyRollStr += "Looks like COMPANION isn't listening to SOOSH right now. Maybe they're annoyed?\nUnfortunately, they lost -10 friendliness exp.";
+        else if ((dieRoll>=7) && (dieRoll<=11))
+            dailyRollStr += currCHCase[2];
+        else if ((dieRoll>=12) && (dieRoll<=19))
+            dailyRollStr += currCHCase[3];
+        else if (dieRoll>=20)
+            dailyRollStr += currCHCase[4];
+        $("#dailyOutput").text(dailyRollStr);
     }
 }
 

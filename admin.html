@@ -40,6 +40,8 @@
                         <option>Mining</option>
                         <option>Wood-Cutting</option>
                         <option>Gathering</option>
+                        <option>Cooking</option>
+                        <option>Companion Handling</option>
                     </select>
                 </div>
                 <div>
@@ -146,20 +148,20 @@
         newRollDaily();
     });
 
-  function loadAdmin() {
-    personalityTestSectionHTML = "";
-    questionArray = ["A","B","C","D"];
-    for (i=1; i<11; i++) {
-      personalityTestSectionHTML += "<p><label>Question " + ('0' + i).slice(-2) + "</label>";
-      for (j=0; j<questionArray.length; j++) {
-        //<input name='question1' type='radio' id='question1A' value='A'><label for='question1A'>A</label>
-        personalityTestSectionHTML += "<input name='question" + i + "' type='radio' id='question" + i + "" + questionArray[j] + "' value='" + questionArray[j] + "'><label for='question" + i + "" + questionArray[j] + "'>" + questionArray[j] + "</label>";
-      }
-      personalityTestSectionHTML += "</p>";
+    function loadAdmin() {
+        $("#sooshLoginButton").addClass("glowingAnimation");
+        personalityTestSectionHTML = "";
+        questionArray = ["A","B","C","D"];
+        for (i=1; i<11; i++) {
+            personalityTestSectionHTML += "<p><label>Question " + ('0' + i).slice(-2) + "</label>";
+            for (j=0; j<questionArray.length; j++) {
+                personalityTestSectionHTML += "<input name='question" + i + "' type='radio' id='question" + i + "" + questionArray[j] + "' value='" + questionArray[j] + "'><label for='question" + i + "" + questionArray[j] + "'>" + questionArray[j] + "</label>";
+            }
+            personalityTestSectionHTML += "</p>";
+        }
+        $("#personalityTestSection").html(personalityTestSectionHTML);
+        Tabletop.init( { key: public_spreadsheet_url, callback: showInfo } );
     }
-    $("#personalityTestSection").html(personalityTestSectionHTML);
-    Tabletop.init( { key: public_spreadsheet_url, callback: showInfo } );
-  }
 
   function showInfo(data, tabletop) {
     $.each( tabletop.sheets("memberOverview").all(), function(i, soosh) {
@@ -204,7 +206,7 @@
       }
     });
     $("#sooshNames").html(datalistHTML);
-    console.log(allSooshNames);
+    $(".loginWrapper").animate({'marginTop' : "-=100%"},1000);
   }
   </script>
 </body>

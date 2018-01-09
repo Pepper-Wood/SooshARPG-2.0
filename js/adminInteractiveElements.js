@@ -14,7 +14,6 @@ String.prototype.hashCode = function(){
 function handlePassword() {
   var val = -1071924008;
   if ($("#sooshPW").val().hashCode() == val) {
-    $(".loginWrapper").animate({'marginTop' : "-=100%"},1000);
     loadAdmin();
   } else {
     $("#sooshPW").addClass("invalid");
