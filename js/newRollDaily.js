@@ -1,11 +1,26 @@
 var dailyType, locationType, sooshName, successModifier, skillBoost, dieRoll, dailyRollStr;
 var stats = TAFFY();
 var companionHandlingCases = [
-    ["playing catch",
-     "Oh no! Looks like SOOSH got too excited and accidentally hit COMPANION in the head with the ball. Hopefully COMPANION isn't too hurt and angry.\nUnfortunately, they received the NEGATIVE STATUS and lost -20 friendliness exp.",
-     "It seems like COMPANION is getting the hang of it, even if they're not able to throw the ball back at SOOSH accurately.\nThey earned +10 handler exp. and +10 friendliness exp.",
-     "It seems like COMPANION is really good at this! In fact, the two of them wore themselves out from played catch the whole afternoon.\nThey earned +20 handler exp. and +20 friendliness exp",
-     "Wow! COMPANION is a natural at this! Maybe the two of you should consider becoming professional baseball players. COMPANION is excited to play catch again another time.\nThey earned +30 handler exp. and +30 friendliness exp"]
+    ["playing frisbee",
+     "Oh no! Looks like SOOSH got too excited and accidentally hit COMPANION in the head with the frisbee.",
+     "It seems like COMPANION is getting the hang of it, even if they're not able to throw the frisbee back at SOOSH accurately.",
+     "It seems like COMPANION is really good at this! In fact, the two of them wore themselves out from playing frisbee the whole afternoon.",
+     "Wow! COMPANION is a natural at this! Maybe the two of you should consider becoming ultimate frisbee players. COMPANION is excited to play catch again another time."],
+     ["playing at an obstacle course",
+      "Oh no! COMPANION got tripped up and face-planted into the ground after trying to jump the first obstacle.",
+      "Looks like the two of them were okay today. Even though COMPANION wasn't able to jump over a couple of the obstacles, they're excited to try this again and hopefully do better next time.",
+      "Looks like the two of them were pretty good today. They completed the course quickly, although each of them tripped over a couple of the obstacles. If they practice just a little bit more, they could get the fastest time for the course!",
+      "Wow! The two of them were naturals at this! In fact, together they might have the highest score for the course!"],
+     ["learning tricks",
+      "Oh no! They decided to try playing patty-cake at first, but SOOSH accidentally hit COMPANION in the face.",
+      "Looks like COMPANION is getting the hang of it. They can sit and lie down on command, but they're still confused about what other commands mean.",
+      "COMPANION really impressed SOOSH today! On top of learning how to sit, roll over, and bark, COMPANION even learned how to do a cool new magic trick.",
+      "Wow! COMPANION learned a ton of tricks today! They even can communicate totally in sign-language while rubbing their stomach and patting their head."],
+     ["playing dress-up",
+      "Oh no! SOOSH commented that COMPANION's makeup looked like it was applied with a Slippery Sammy.",
+      "Looks like COMPANION is getting the hang of it. Their makeup is a bit messy, but the two of them had a lot of fun trying on different clothes.",
+      "They had a lot of fun, and both their makeup and outfits turned out lovely! The two of them are ready for a night on the town.",
+      "Wow! The two of them look like born super models. Maybe they'll appear on the cover of Kyootie Soosh Quarterly together!"]
 ];
 
 function rollDie(dieSize) {
@@ -16,7 +31,7 @@ function modifiedRollDie(dieSize) {
   return Math.floor((Math.random() * dieSize) + 1) + successModifier + addSkillBoost(skillBoost);
 }
 
-function newRollDaily() {
+function rollDaily() {
     $("#dailyOutput").text("Loading...\n\n\n");
     sooshName = $("#sooshName").val();
     if (allSooshNames.indexOf(sooshName) <= -1) {
@@ -143,18 +158,18 @@ function finalRollDaily() {
             dailyRollStr += "They cooked up a storm today! With so much delicious food, this is a cause for celebration!\nThey managed to cook ITEM.\nThey are awarded XX exp.\nThey also received the POSITIVE STATUS.";
         $("#dailyOutput").text(dailyRollStr);
     } else if (dailyType == "Companion Handling") {
-        currCHCase = companionHandlingCases[0];
+        currCHCase = companionHandlingCases[Math.floor(Math.random()*companionHandlingCases.length)];
         dailyRollStr = "<sub>" + sooshName + " tried their hand at companion handling with COMPANION. They decided to try " + currCHCase[0] + ".\n";
         if (dieRoll==1)
-            dailyRollStr += currCHCase[1];
+            dailyRollStr += currCHCase[1] + " Hopefully COMPANION isn't too hurt and angry.\nUnfortunately, they received the NEGATIVE STATUS and lost -20 friendliness exp.";
         else if ((dieRoll>=2) && (dieRoll<=6))
             dailyRollStr += "Looks like COMPANION isn't listening to SOOSH right now. Maybe they're annoyed?\nUnfortunately, they lost -10 friendliness exp.";
         else if ((dieRoll>=7) && (dieRoll<=11))
-            dailyRollStr += currCHCase[2];
+            dailyRollStr += currCHCase[2] + "\nThey earned +10 handler exp. and +10 friendliness exp.";
         else if ((dieRoll>=12) && (dieRoll<=19))
-            dailyRollStr += currCHCase[3];
+            dailyRollStr += currCHCase[3] + "\nThey earned +20 handler exp. and +20 friendliness exp.";
         else if (dieRoll>=20)
-            dailyRollStr += currCHCase[4];
+            dailyRollStr += currCHCase[4] + "\nThey earned +30 handler exp. and +30 friendliness exp.";
         $("#dailyOutput").text(dailyRollStr);
     }
 }
