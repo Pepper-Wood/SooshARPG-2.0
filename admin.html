@@ -4,7 +4,7 @@
     <title>Admin Dashboard</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link id="favicon" rel="shortcut icon" type="image/png" href="http://is5.mzstatic.com/image/thumb/Purple111/v4/67/5a/15/675a1530-900b-6edd-509a-a3d4ac8df10a/source/175x175bb.png" />
+    <link id="favicon" rel="shortcut icon" type="image/gif" href="http://rs858.pbsrc.com/albums/ab148/SuperNyappyOfLove/Kawaii%20Stuff/Pixels/068.gif~c200" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="http://materializecss.com/css/ghpages-materialize.css" rel="stylesheet">
     <link href="css/admin.css" rel="stylesheet">
@@ -21,90 +21,127 @@
     </div>
 
     <ul id="navigation-tabs" class="tabs z-depth-1" data-scroll-header>
-        <li class="tab col s3"><a class="active" href="#dailiesRollerFlag">Dailies Roller</a></li>
+        <li class="tab col s3"><a class="active" href="#pepperFlag">Pepper's Notes</a></li>
+        <li class="tab col s3"><a href="#dailiesRollerFlag">Dailies Roller</a></li>
         <li class="tab col s3"><a href="#villagePersonalityTestFlag">Village Personality Test</a></li>
-        <li class="tab col s3"><a href="#databaseDescriptionGeneratorFlag">(WIP) Database Description Generator</a></li>
     </ul>
     <div class="container">
+        <div id="pepperFlag"></div>
+        <div id="pepper" class="col s12 headerBuffer">
+            <div class="card" style="padding:10px;">
+                <h3>Pepper's Notes</h3>
+                <p><a target="_blank" href="https://soosharpg.weebly.com/status-inflictions.html">url for status inflictions</a> All debuffs happen when a 1 is rolled; All buffs happen when a 20 is rolled.</p>
+                <table>
+                    <tr style="background-color:rgba(0,0,0,0.2)"><td>Buff/Debuff Name</td><td>Conditions it can be obtained</td></tr>
+                    <tr><td>Lucky Duck</td><td>buff for Angling, Mining, Wood-Cutting, Gathering</td></tr>
+                    <tr><td>Unlucky Duck</td><td>???</td></tr>
+                    <tr><td>Lazy Bork</td><td>debuff for Crafting, Angling, Mining, Wood-Cutting, Gathering</td></tr>
+                    <tr><td>Happy Camper</td><td>???</td></tr>
+                    <tr><td>Spooked Pupper</td><td>debuff for if soosh is too low level going into a specific area</td></tr>
+                    <tr><td>BEES!!!</td><td>debuff for Hunting</td></tr>
+                    <tr><td>Strong Senses</td><td>???</td></tr>
+                    <tr><td>Magic Paws</td><td>buff for Crafting</td></tr>
+                    <tr><td>Lunar Moth</td><td>buff for Hunting</td></tr>
+                </table>
+                <ul>
+                    <li><p>For other mods to provide answers:</p></li>
+                    <li><b>- Please confirm the accuracy of the information in the above table</b></li>
+                    <li><b>- What is the NEGATIVE STATUS for Companion Handling?</b></li>
+                    <li><p>Pepper's To-Do</p></li>
+                    <li>- Add flavortext for crafting along with image generation</li>
+                    <li>- Add check for level when entering areas to determine spooky debuff</li>
+                    <li>- Update the Admin Dashboard so that it is accurate</li>
+                    <li>- Create prompt calculator</li>
+                </ul>
+            </div>
+        </div>
+
         <div id="dailiesRollerFlag"></div>
         <div id="dailiesRoller" class="col s12 headerBuffer">
-            <h3>Dailies Roller</h3>
+            <div class="card cardTile">
+                <h3>Dailies Roller</h3>
 
-            <div class="horizontalFlex flexGrow">
-                <div>
-                    <label for="dailyType">Daily Type</label>
-                    <select id="dailyType" class="browser-default">
-                        <option>Crafting</option>
-                        <option>Hunting</option>
-                        <option>Angling</option>
-                        <option>Mining</option>
-                        <option>Wood-Cutting</option>
-                        <option>Gathering</option>
-                        <option>Cooking</option>
-                        <option>Companion Handling</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="locationType">Location</label>
-                    <select id="locationType" class="browser-default">
-                        <option>The Thickets</option>
-                        <option>The Midwoods</option>
-                        <option>The Thorns</option>
-                        <option>Mount Solitude</option>
-                        <option>Lake of Reflections</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="input-field">
-                <input id="sooshName" type="text" list="sooshNames">
-                <datalist id="sooshNames"></datalist>
-                <label for="sooshName">User :: Soosh's Name</label>
-            </div>
-            <p id="sooshNameError" class="errorText">SooshARPG member not found. Please enter a valid name.</p>
-
-            <div style="margin-top:20px">
-                <label for="inventoryBuff">Success Modifier</label>
-                <div id="inventoryBuff" class="horizontalFlex">
-                    <button type="button" class="btn inactiveBtn waves-effect waves-light">-3</button>
-                    <button type="button" class="btn inactiveBtn waves-effect waves-light">-2</button>
-                    <button type="button" class="btn inactiveBtn waves-effect waves-light">-1</button>
-                    <button type="button" class="btn inactiveBtn waves-effect waves-light activeBtn">0</button>
-                    <button type="button" class="btn inactiveBtn waves-effect waves-light">+1</button>
-                    <button type="button" class="btn inactiveBtn waves-effect waves-light">+2</button>
-                    <button type="button" class="btn inactiveBtn waves-effect waves-light">+3</button>
-                </div>
-            </div>
-            <div class="card" style="margin-top:20px;padding:20px">
-                <div class="horizontalFlex">
-                    <button id="rollDaily" type="button" class="blockBtn waves-effect waves-light btn">Roll Daily</button>
-                    <button type="button" id="copyToClipboard" class="blockBtn waves-effect waves-light btn">Copy to Clipboard</button>
+                <div class="horizontalFlex flexGrow">
+                    <div>
+                        <label for="dailyType">Daily Type</label>
+                        <select id="dailyType" class="browser-default">
+                            <option>Crafting</option>
+                            <option>Hunting</option>
+                            <option>Angling</option>
+                            <option>Mining</option>
+                            <option>Wood-Cutting</option>
+                            <option>Gathering</option>
+                            <option>Cooking</option>
+                            <option>Companion Handling</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="locationType">Location</label>
+                        <select id="locationType" class="browser-default">
+                            <option>The Thickets</option>
+                            <option>The Midwoods</option>
+                            <option>The Thorns</option>
+                            <option>Mount Solitude</option>
+                            <option>Lake of Reflections</option>
+                        </select>
+                    </div>
                 </div>
 
-                <label for="dailyOutput">Daily Result</label>
-                <p id="dailyOutput"><br><br><br></p>
-                <p id="copiedToClipboard" class="errorText">Copied to clipboard!</p>
+                <div class="input-field">
+                    <input id="sooshName" type="text" list="sooshNames">
+                    <datalist id="sooshNames"></datalist>
+                    <label for="sooshName">User :: Soosh's Name</label>
+                </div>
+                <p id="sooshNameError" class="errorText">SooshARPG member not found. Please enter a valid name.</p>
+
+                <div class="input-field">
+                    <input id="inputItemName" type="text">
+                    <label for="inputItemName">Crafting Item</label>
+                </div>
+
+                <div style="margin-top:20px">
+                    <label for="inventoryBuff">Success Modifier</label>
+                    <div id="inventoryBuff" class="horizontalFlex">
+                        <button type="button" class="btn inactiveBtn waves-effect waves-light">-3</button>
+                        <button type="button" class="btn inactiveBtn waves-effect waves-light">-2</button>
+                        <button type="button" class="btn inactiveBtn waves-effect waves-light">-1</button>
+                        <button type="button" class="btn inactiveBtn waves-effect waves-light activeBtn">0</button>
+                        <button type="button" class="btn inactiveBtn waves-effect waves-light">+1</button>
+                        <button type="button" class="btn inactiveBtn waves-effect waves-light">+2</button>
+                        <button type="button" class="btn inactiveBtn waves-effect waves-light">+3</button>
+                    </div>
+                </div>
+                <div class="card" style="margin-top:20px;padding:20px">
+                    <div class="horizontalFlex">
+                        <button id="rollDaily" type="button" class="blockBtn waves-effect waves-light btn">Roll Daily</button>
+                        <button type="button" id="copyToClipboard" class="blockBtn waves-effect waves-light btn">Copy Result to Clipboard</button>
+                        <button type="button" id="copyImgToClipboard" class="blockBtn waves-effect waves-light btn">Copy Thumbnail to Clipboard</button>
+                    </div>
+
+                    <label for="dailyOutput">Daily Result</label>
+                    <textarea id="dailyOutput"></textarea>
+                    <label for="thumbnailOutput">Thumbnail Result</label>
+                    <textarea id="thumbnailOutput"></textarea>
+                    <p id="copiedToClipboard" class="errorText">Copied Result to clipboard!</p>
+                    <p id="copiedImgToClipboard" class="errorText">Copied Thumbnail to clipboard!</p>
+                </div>
             </div>
         </div>
 
         <div id="villagePersonalityTestFlag"></div>
         <div id="villagePersonalityTest" class="col s12 headerBuffer">
-            <h3>Village Personality Test</h3>
-            <div class="horizontalFlex">
-                <div style="width:40%;">
-                    <div id="personalityTestSection"></div>
-                    <button type="button" id="sortingHat" class="blockBtn waves-effect waves-light btn">Calculate Village</button>
-                </div>
-                <div style="width:60%">
-                    <div id="chartContainer"></div>
+            <div class="card cardTile">
+                <h3>Village Personality Test</h3>
+                <div class="horizontalFlex">
+                    <div style="width:40%;">
+                        <div id="personalityTestSection"></div>
+                        <button type="button" id="sortingHat" class="blockBtn waves-effect waves-light btn">Calculate Village</button>
+                    </div>
+                    <div style="width:60%">
+                        <div id="chartContainer"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div id="databaseDescriptionGeneratorFlag"></div>
-        <div id="databaseDescriptionGenerator" class="col s12 headerBuffer">
-            <h3>(WIP) Database Description Generator</h3>
-            <p>Scrapping all my old code; If I do this, I'm starting from scratch</p>
         </div>
     </div>
 
@@ -120,7 +157,7 @@
     <script src="js/taffy.js"></script>
     <script src="http://www.kathryndipippo.com/SooshARPG/js/DAILIESDB.js"></script>
     <script src="js/adminInteractiveElements.js"></script>
-    <script src="js/newRollDaily.js"></script>
+    <script src="js/rollDaily.js"></script>
     <script>
     var public_spreadsheet_url = "https://docs.google.com/spreadsheets/d/1xUaU5i38rzwjQCs5RRwAQUIa6kpNcTFtlSSp_Tr80nE/edit?usp=sharing";
     var allSooshNames = [];
@@ -142,6 +179,18 @@
     });
     $("#sooshName").click(function() {
         $("#sooshNameError").slideUp();
+    });
+    $("#dailyType").change(function() {
+        $("#inputItemName").val("");
+        if ($("#dailyType option:selected").text() == "Crafting") {
+            $("#inputItemName").next().text("Crafting Item");
+            $("#inputItemName").parent().slideDown();
+        } else if ($("#dailyType option:selected").text() == "Cooking") {
+            $("#inputItemName").next().text("Cooking Item");
+            $("#inputItemName").parent().slideDown();
+        } else {
+            $("#inputItemName").parent().slideUp();
+        }
     });
     $("#rollDaily").click(function() {
         rollDaily();
@@ -167,6 +216,9 @@
       sooshARPGDirectory.insert({ "username":soosh.username,
                                   "status":soosh.status,
                                   "sooshName":soosh.sooshName,
+                                  "sPronouns":soosh.sPronouns,
+                                  "companionName":soosh.companionName,
+                                  "cPronouns":soosh.cPronouns,
                                   "village":soosh.village,
                                   "appURL":soosh.appURL,
                                   "spreadsheetURL":soosh.spreadsheetURL,
@@ -188,6 +240,7 @@
       allItems.insert({"name":entry.name,
                        "smallImgUrl":entry.smallImgUrl,
                        "bigImgUrl":entry.bigImgUrl,
+                       "thumbUrl":entry.thumbUrl,
                        "lifeSkill":entry.lifeSkill,
                        "description":entry.description,
                        "type":entry.type,
@@ -206,6 +259,7 @@
     });
     $("#sooshNames").html(datalistHTML);
     $(".loginWrapper").animate({'marginTop' : "-=100%"},1000);
+    $(".loginWrapper").fadeOut(1000);
   }
   </script>
 </body>
