@@ -118,7 +118,7 @@ function finalRollDaily() {
             if (dailyType == "Hunting") {
                 dailyRollStr = sooshName + " went " + dailyType + " in " + locationType + ".\n";
                 dailyRollStr += getProperPronoun(sPronouns, "they").capitalizeFirstLetter() + " managed to find BEES!!!!\n";
-                dailyRollStr += "Unfortunately " + getProperPronoun(sPronouns, "they") + " received the <b>BEES! Status Infliction</b>. " + getProperPronoun(sPronouns, "they").capitalizeFirstLetter() + " will get -2 to hunting rolls over the next 2 days.\n";
+                dailyRollStr += "Unfortunately " + getProperPronoun(sPronouns, "they") + " received the <b>BEES! Status Infliction</b>. " + getProperPronoun(sPronouns, "they").capitalizeFirstLetter() + " will get -2 to hunting rolls over the next 2 days. (" + getProperPronoun(sPronouns, "they").capitalizeFirstLetter() + " also do not capture the bees)";
                 $("#dailyOutput").text(dailyRollStr);
                 $("#thumbnailOutput").text("https://sta.sh/01jjwozjr50d");
             } else {
